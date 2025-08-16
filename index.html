@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MVP Fashion Aggregator — Enhanced Presentation</title>
+  <meta name="description" content="ارائه MVP با طراحی مدرن و جذاب" />
+  <style>
+    :root{
+      --bg: #fafafa;
+      --bg-secondary: #ffffff;
+      --fg: #111111;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-warm: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+      --maxw: 1200px;
+      --step-0: clamp(14px, 1.1vw, 16px);
+      --step-1: clamp(18px, 1.6vw, 22px);
+      --step-2: clamp(24px, 2.4vw, 34px);
+      --step-3: clamp(36px, 4.5vw, 72px);
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0f0f23;
+        --bg-secondary: #1a1a2e;
+        --fg: #f8fafc;
+        --muted: #94a3b8;
+        --line: #334155;
+        --accent: #60a5fa;
+        --accent-hover: #3b82f6;
+        --success: #34d399;
+        --warning: #fbbf24;
+        --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-warm: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html,body{height:100%; margin:0; padding:0;}
+    body{
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", "Noto Naskh Arabic", "Vazirmatn", "IRANSans", sans-serif;
+      letter-spacing: 0.025em;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Enhanced Navigation */
+    .nav{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--line);
+      transition: all 0.3s ease;
+    }
+    @media (prefers-color-scheme: dark){
+      .nav { background: rgba(15, 15, 35, 0.8); }
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow);
+    }
+    @media (prefers-color-scheme: dark){
+      .nav.scrolled { background: rgba(15, 15, 35, 0.95); }
+    }
+    
+    .nav__wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .brand{
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .brand span{
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    .nav__links{
+      margin-inline-start: auto;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .nav__link{
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--fg);
+      opacity: 0.8;
+      padding: 8px 16px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .nav__link:hover{
+      opacity: 1;
+      background: var(--accent);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section Enhanced */
+    .hero{
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--bg) 0%, rgba(59, 130, 246, 0.03) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero__wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+      display: grid;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .kicker{
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(59, 130, 246, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      width: fit-content;
+    }
+    .headline{
+      font-size: var(--step-3);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      max-width: 18ch;
+    }
+    .subhead{
+      font-size: var(--step-1);
+      color: var(--muted);
+      max-width: 50ch;
+      line-height: 1.6;
+    }
+    .hero__meta{
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .meta-badge {
+      background: var(--bg-secondary);
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow);
+    }
+    .meta-badge::before {
+      content: '•';
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 90;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .fab:hover {
+      transform: scale(1.1) rotate(15deg);
+    }
+
+    /* Enhanced Sections */
+    section{
+      padding: 100px 0;
+      position: relative;
+    }
+    section:nth-child(even) {
+      background: var(--bg-secondary);
+    }
+    .section__wrap{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section__title{
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section__title h2{
+      margin: 0 0 16px 0;
+      font-size: var(--step-2);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hint{
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Enhanced Grid Cards */
+    .grid{
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .card{
+      grid-column: span 12;
+      background: var(--bg-secondary);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    .card:hover::before {
+      left: 100%;
+    }
+    .card:hover{
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    .card h3{
+      font-weight: 600;
+      font-size: 20px;
+      margin: 0 0 16px 0;
+      letter-spacing: 0.02em;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .card h3::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+    .card:hover h3::before {
+      transform: translateX(-4px);
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--step-0);
+      line-height: 1.6;
+    }
+    .list{
+      margin: 16px 0 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+    .list li{
+      margin: 12px 0;
+      padding: 8px 0;
+      padding-inline-start: 24px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .list li::before {
+      content: '✓';
+      position: absolute;
+      right: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+    .card:hover .list li {
+      color: var(--fg);
+    }
+
+    /* Grid Responsive */
+    .span-6{ grid-column: span 6; }
+    .span-4{ grid-column: span 4; }
+    .span-8{ grid-column: span 8; }
+    .span-3{ grid-column: span 3; }
+
+    @media (max-width: 968px){
+      .span-6, .span-4, .span-8, .span-3 { grid-column: span 12; }
+    }
+    @media (min-width: 769px) and (max-width: 968px){
+      .span-6 { grid-column: span 6; }
+    }
+
+    /* Enhanced Timeline */
+    .timeline{
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 2px;
+      opacity: 0.3;
+    }
+    .milestone{
+      background: var(--bg-secondary);
+      border: 2px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .milestone::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: -12px;
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 4px solid var(--bg-secondary);
+      z-index: 1;
+    }
+    .milestone:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    .milestone b{
+      display: block;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      font-size: 18px;
+      color: var(--accent);
+    }
+    .week{
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      background: rgba(59, 130, 246, 0.1);
+      padding: 4px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    /* Enhanced Footer */
+    .footer{
+      text-align: center;
+      padding: 60px 24px;
+      background: var(--gradient);
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* Animations */
+    html{ scroll-behavior: smooth; }
+
+    [data-reveal]{
+      opacity: 0;
+      transform: translateY(24px);
+      animation: reveal 0.8s ease forwards;
+    }
+    [data-delay="1"]{ animation-delay: 0.1s; }
+    [data-delay="2"]{ animation-delay: 0.2s; }
+    [data-delay="3"]{ animation-delay: 0.3s; }
+    [data-delay="4"]{ animation-delay: 0.4s; }
+
+    @keyframes reveal{
+      to{
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Floating elements */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float { animation: float 6s ease-in-out infinite; }
+
+    /* Progress indicator */
+    .progress-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--gradient);
+      z-index: 101;
+      transition: width 0.1s ease;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .nav__wrap {
+        padding: 12px 16px;
+        gap: 16px;
+      }
+      .nav__links {
+        gap: 12px;
+      }
+      .nav__link {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+      .hero__wrap {
+        padding: 100px 16px 60px;
+        gap: 32px;
+      }
+      .section__wrap {
+        padding: 0 16px;
+      }
+      .card {
+        padding: 24px;
+      }
+      .fab {
+        bottom: 16px;
+        left: 16px;
+        width: 48px;
+        height: 48px;
+      }
+      .timeline::before {
+        display: none;
+      }
+      .milestone::before {
+        display: none;
+      }
+    }
+
+    /* Print styles */
+    @media print{
+      .nav, .fab, .progress-indicator { display: none !important; }
+      .hero { min-height: auto; }
+      .card:hover { box-shadow: none; transform: none; }
+      a { text-decoration: none; color: inherit; }
+      * { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Indicator -->
+  <div class="progress-indicator" id="progress"></div>
+
+  <!-- Navigation -->
+  <header class="nav" role="navigation" id="nav">
+    <div class="nav__wrap">
+      <div class="brand" aria-label="Brand">FASHION <span>AGGREGATOR</span></div>
+      <nav class="nav__links" aria-label="Page Navigation">
+        <a class="nav__link" href="#structure">ساختار</a>
+        <a class="nav__link" href="#features">ویژگی‌ها</a>
+        <a class="nav__link" href="#admin">پنل مدیریت</a>
+        <a class="nav__link" href="#comms">ارتباط با مشتری</a>
+        <a class="nav__link" href="#timeline">زمان‌بندی</a>
+        <a class="nav__link" href="#challenges">چالش‌ها</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Floating Action Button -->
+  <button class="fab" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+    ↑
+  </button>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__wrap">
+      <div class="kicker float" data-reveal>ارائه MVP</div>
+      <h1 class="headline" data-reveal data-delay="1">
+        خرید از چند برند در یک اپ؛ ساده، شیک، یکپارچه.
+      </h1>
+      <p class="subhead" data-reveal data-delay="2">
+        تجربه‌ای مینیمال و روان شبیه زارا: رابط تمیز، تایپوگرافی دقیق، و تمرکز بر تبدیل با طراحی مدرن و جذاب.
+      </p>
+      <div class="hero__meta" data-reveal data-delay="3">
+        <div class="meta-badge">React Native + WebView</div>
+        <div class="meta-badge">سبد چندبرندی</div>
+        <div class="meta-badge">پرداخت یکپارچه</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure -->
+  <section id="structure" aria-labelledby="structure-title">
+    <div class="section__wrap">
+      <div class="section__title">
+        <h2 id="structure-title">ساختار اپلیکیشن</h2>
+        <div class="hint">Home → WebView → Cart → Pay</div>
+      </div>
+      <div class="grid">
+        <div class="card span-6" data-reveal>
+          <h3>جریان اصلی</h3>
+          <p>صفحه اصلی → انتخاب برند/دسته‌بندی → WebView خرید → سبد خرید → پرداخت</p>
+        </div>
+        <div class="card span-6" data-reveal data-delay="1">
+          <h3>فیچرهای کلیدی</h3>
+          <ul class="list">
+            <li>برندهای ویژه و جستجو</li>
+            <li>شناسایی محصول با JS تزریقی</li>
+            <li>دکمه شناور «افزودن به سبد»</li>
+            <li>سبد یکپارچه چندبرندی</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" aria-labelledby="features-title">
+    <div class="section__wrap">
+      <div class="section__title">
+        <h2 id="features-title">ویژگی‌ها</h2>
+        <div class="hint">Minimal. Focused. Fast.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-4" data-reveal>
+          <h3>صفحه اصلی</h3>
+          <ul class="list">
+            <li>کاروسل برندهای ویژه (Zara, H&M, Mango)</li>
+            <li>کاشی‌های دسته‌بندی (زنانه/مردانه/بچگانه/اکسسوری)</li>
+            <li>جستجوی برند + اخیراً دیده‌شده</li>
+          </ul>
+        </div>
+
+        <div class="card span-4" data-reveal data-delay="1">
+          <h3>برند/دسته‌بندی</h3>
+          <ul class="list">
+            <li>گرید لوگوها با لینک مستقیم</li>
+            <li>فیلتر بر اساس دسته‌بندی</li>
+            <li>بنرهای تبلیغاتی اختصاصی</li>
+          </ul>
+        </div>
+
+        <div class="card span-4" data-reveal data-delay="2">
+          <h3>خرید در WebView</h3>
+          <ul class="list">
+            <li>وب‌ویوی تمام‌صفحه + ناوبری ساده</li>
+            <li>دکمه شناور افزودن به سبد</li>
+            <li>تشخیص محصول با JS تزریقی</li>
+          </ul>
+        </div>
+
+        <div class="card span-6" data-reveal>
+          <h3>سیستم تزریق جاوااسکریپت</h3>
+          <ul class="list">
+            <li>استخراج نام/قیمت/تصویر/تنوع</li>
+            <li>پنل پایینی انتخاب سایز/رنگ/تعداد</li>
+            <li>همگام‌سازی لحظه‌ای موجودی و قیمت</li>
+            <li>سازگاری با برندهای بزرگ (Zara, H&M, ASOS…)</li>
+          </ul>
+        </div>
+
+        <div class="card span-6" data-reveal data-delay="1">
+          <h3>سبد خرید یکپارچه</h3>
+          <ul class="list">
+            <li>اقلام از چند وب‌سایت در یک سبد</li>
+            <li>گروه‌بندی بر اساس برند</li>
+            <li>ویرایش/حذف + محاسبه قیمت لحظه‌ای</li>
+            <li>ذخیره برای بعد</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin -->
+  <section id="admin" aria-labelledby="admin-title">
+    <div class="section__wrap">
+      <div class="section__title">
+        <h2 id="admin-title">پنل مدیریت (وب)</h2>
+        <div class="hint">Control. Configure. Grow.</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-3" data-reveal>
+          <h3>داشبورد سفارش‌ها</h3>
+          <ul class="list">
+            <li>لیست سفارش‌ها به تفکیک برند</li>
+            <li>جزئیات با لینک به سایت اصلی</li>
+            <li>اطلاعات مشتری و آدرس‌ها</li>
+            <li>گردش وضعیت: جدید → پردازش → ارسال → تکمیل</li>
+          </ul>
+        </div>
+
+        <div class="card span-3" data-reveal data-delay="1">
+          <h3>مدیریت برندها</h3>
+          <ul class="list">
+            <li>افزودن/حذف برندهای پشتیبانی‌شده</li>
+            <li>انتخابگرهای اختصاصی JS</li>
+            <li>لوگو و محتوای تبلیغاتی</li>
+            <li>فعال/غیرفعال‌سازی برای تعمیرات</li>
+          </ul>
+        </div>
+
+        <div class="card span-3" data-reveal data-delay="2">
+          <h3>مدیریت تزریق JS</h3>
+          <ul class="list">
+            <li>قوانین تشخیص محصول برای هر برند</li>
+            <li>تست روی وب‌سایت زنده</li>
+            <li>به‌روزرسانی انتخابگرها هنگام تغییرات</li>
+            <li>مانیتورینگ خطا</li>
+          </ul>
+        </div>
+
+        <div class="card span-3" data-reveal data-delay="3">
+          <h3>پشتیبانی مشتری</h3>
+          <ul class="list">
+            <li>مدیریت پرس‌وجوهای سفارش</li>
+            <li>پیگیری مشکل به تفکیک برند</li>
+            <li>ثبت ارتباطات</li>
+            <li>مرجوعی و بازپرداخت</li>
+          </ul>
+        </div>
+
+        <div class="card span-12" data-reveal data-delay="4">
+          <h3>تحلیل و رشد</h3>
+          <ul class="list">
+            <li>سفارش‌ها به تفکیک برند</li>
+            <li>محصولات/دسته‌های محبوب</li>
+            <li>نرخ تبدیل هر برند</li>
+            <li>تفکیک درآمد</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Communications -->
+  <section id="comms" aria-labelledby="comms-title">
+    <div class="section__wrap">
+      <div class="section__title">
+        <h2 id="comms-title">ارتباط با مشتری</h2>
+        <div class="hint">Automated & On‑brand</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6" data-reveal>
+          <h3>ایمیل تأیید سفارش</h3>
+          <ul class="list">
+            <li>خلاصه چندبرندی + جزئیات هر برند</li>
+            <li>زمان تحویل به تفکیک برند</li>
+            <li>اطلاعات تماس پشتیبانی</li>
+          </ul>
+        </div>
+        <div class="card span-6" data-reveal data-delay="1">
+          <h3>بروزرسانی‌ها</h3>
+          <ul class="list">
+            <li>تأیید پردازش</li>
+            <li>اعلان ارسال (در صورت نیاز به تفکیک برند)</li>
+            <li>تأیید تحویل + درخواست بازخورد</li>
+          </ul>
+        </div>
+        <div class="card span-12" data-reveal data-delay="2">
+          <h3>اعلان‌های مدیر</h3>
+          <ul class="list">
+            <li>سفارش‌های جدید چندبرندی</li>
+            <li>خطای تزریق جاوااسکریپت</li>
+            <li>تشخیص تغییرات وب‌سایت برند</li>
+            <li>درخواست‌های مشتریان</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section id="timeline" aria-labelledby="timeline-title">
+    <div class="section__wrap">
+      <div class="section__title">
+        <h2 id="timeline-title">زمان‌بندی توسعه MVP (۱۰ هفته)</h2>
+        <div class="hint">From Zero to One</div>
+      </div>
+
+      <div class="timeline">
+        <div class="milestone" data-reveal>
+          <div class="week">هفته ۱–۲</div>
+          <b>پایه WebView و صفحه اصلی</b>
+          <p>ناوبری WebView، گرید برندها، فیلتر دسته‌بندی، کنترل‌های پایه.</p>
+        </div>
+        <div class="milestone" data-reveal data-delay="1">
+          <div class="week">هفته ۳–۴</div>
+          <b>سیستم تزریق جاوااسکریپت</b>
+          <p>چارچوب تشخیص محصول، انتخابگرهای اختصاصی، پل پیام، پنل افزودن به سبد.</p>
+        </div>
+        <div class="milestone" data-reveal data-delay="2">
+          <div class="week">هفته ۵–۶</div>
+          <b>سبد خرید چندبرندی</b>
+          <p>سبد یکپارچه، پایداری و همگام‌سازی، ویرایش اقلام، تبدیل سبد به سفارش.</p>
+        </div>
+        <div class="milestone" data-reveal data-delay="3">
+          <div class="week">هفته ۷–۸</div>
+          <b>پرداخت و بک‌اند</b>
+          <p>Stripe، APIهای سفارش، ایمیل تراکنشی، پایه پنل مدیریت.</p>
+        </div>
+        <div class="milestone" data-reveal data-delay="4">
+          <div class="week">هفته ۹–۱۰</div>
+          <b>پنل مدیریت و تست نهایی</b>
+          <p>مدیریت برند، ابزار تست تزریق، داشبورد سفارش، E2E و رفع باگ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges -->
+  <section id="challenges" aria-labelledby="challenges-title">
+    <div class="section__wrap">
+      <div class="section__title">
+        <h2 id="challenges-title">چالش‌های فنی و راه‌حل‌ها</h2>
+        <div class="hint">Resilient by Design</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-4" data-reveal>
+          <h3>تغییر وب‌سایت‌ها</h3>
+          <ul class="list">
+            <li>تست خودکار منظم اسکریپت‌ها</li>
+            <li>انتخابگرهای پشتیبان</li>
+            <li>هشدار مدیریتی هنگام شکست شناسایی</li>
+            <li>گزارش‌دهی جامعه کاربران</li>
+          </ul>
+        </div>
+
+        <div class="card span-4" data-reveal data-delay="1">
+          <h3>تدابیر ضدربات</h3>
+          <ul class="list">
+            <li>شبیه‌سازی رفتار کاربر</li>
+            <li>چرخش User-Agent</li>
+            <li>رعایت robots.txt</li>
+            <li>تمرکز بر داده‌های عمومی</li>
+          </ul>
+        </div>
+
+        <div class="card span-4" data-reveal data-delay="2">
+          <h3>سبد چندبرندی</h3>
+          <ul class="list">
+            <li>استانداردسازی شِمای داده محصول</li>
+            <li>رابط برند-اگنوستیک سبد</li>
+            <li>مدیریت تنوع‌ها (سایز/رنگ)</li>
+            <li>پرداخت یکپارچه</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Footer -->
+  <footer class="footer">
+    <div style="max-width: var(--maxw); margin: 0 auto; padding: 0 24px;">
+      <h3 style="margin: 0 0 16px 0; font-size: 24px; font-weight: 700;">FASHION AGGREGATOR MVP</h3>
+      <p style="margin: 0; font-size: 16px; opacity: 0.9; line-height: 1.6;">
+        طراحی مدرن و جذاب — تمرکز بر سادگی، خوانایی و تبدیل بالا
+      </p>
+      <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 14px; opacity: 0.8;">
+        MVP Presentation • Enhanced Design • Ready for Development
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('nav');
+      const progress = document.getElementById('progress');
+      
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      
+      // Progress indicator
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progress.style.width = scrolled + '%';
+    });
+
+    // Smooth reveal on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all reveal elements
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+
+    // Parallax effect for hero background
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero && scrolled < hero.offsetHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.querySelectorAll('[data-reveal]').forEach((el, index) => {
+        setTimeout(() => {
+          el.style.animationPlayState = 'running';
+        }, index * 100);
+      });
+    });
+
+    // Enhanced card interactions
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        e.target.style.setProperty('--mouse-x', x + 'px');
+        e.target.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+  </script>
+
+</body>
+</html>
