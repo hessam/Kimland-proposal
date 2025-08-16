@@ -289,35 +289,37 @@
     /* Timeline */
     .timeline {
       position: relative;
+      padding-right: 2rem;
     }
 
     .timeline::before {
       content: '';
       position: absolute;
-      right: 1rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary);
-      opacity: 0.3;
+      right: 0.75rem;
+      top: 1rem;
+      bottom: 1rem;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary) 0%, var(--primary) 100%);
+      border-radius: 2px;
     }
 
     .timeline-item {
       position: relative;
-      padding: 1.5rem 0 1.5rem 2.5rem;
-      border-right: 2px solid transparent;
+      padding: 1.5rem 0;
+      margin-right: 2rem;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      right: -5px;
-      top: 2rem;
-      width: 10px;
-      height: 10px;
+      right: -2.6rem;
+      top: 1.75rem;
+      width: 12px;
+      height: 12px;
       background: var(--primary);
       border-radius: 50%;
       border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--primary);
     }
 
     .timeline-week {
@@ -343,63 +345,75 @@
     }
 
     /* Pricing Cards */
-    .pricing-grid {
+    .pricing-section {
       display: grid;
-      gap: 1rem;
+      gap: 2rem;
       margin: 2rem 0;
     }
 
-    .pricing-card {
+    .pricing-phase {
       background: var(--bg);
       border: 2px solid var(--border);
       border-radius: var(--radius);
-      padding: 2rem 1.5rem;
+      padding: 2rem;
       text-align: center;
-      position: relative;
-      overflow: hidden;
       transition: all 0.3s ease;
     }
 
-    .pricing-card.featured {
+    .pricing-phase.mvp {
       border-color: var(--primary);
       background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
     }
 
-    .pricing-card.featured::before {
-      content: 'توصیه می‌شود';
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+    .pricing-phase.maintenance {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+    }
+
+    .phase-label {
+      display: inline-block;
       background: var(--primary);
       color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.75rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
       font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .phase-label.maintenance {
+      background: var(--accent);
     }
 
     .pricing-title {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: var(--primary);
+      color: var(--text-primary);
     }
 
     .pricing-amount {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .pricing-amount.maintenance {
+      color: var(--accent);
     }
 
     .pricing-amount .currency {
       font-size: 1rem;
       color: var(--text-secondary);
+      font-weight: 500;
     }
 
     .pricing-desc {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
-      font-size: 0.875rem;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     /* Tech Stack */
@@ -447,7 +461,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
       
-      .pricing-grid {
+      .pricing-section {
         grid-template-columns: repeat(2, 1fr);
       }
       
@@ -463,10 +477,6 @@
     @media (min-width: 768px) {
       .section-title {
         font-size: 2.25rem;
-      }
-      
-      .pricing-grid {
-        grid-template-columns: repeat(3, 1fr);
       }
       
       .process-flow {
@@ -829,132 +839,61 @@
         <p class="section-subtitle">سرمایه‌گذاری و ارزش پروژه</p>
       </div>
 
-      <div class="pricing-grid">
-        <div class="pricing-card">
+      <div class="pricing-section">
+        <div class="pricing-phase mvp">
+          <div class="phase-label">فاز اول</div>
           <div class="pricing-title">نسخه MVP</div>
           <div class="pricing-amount">
             $15,000
             <span class="currency">USD</span>
           </div>
-          <div class="pricing-desc">پکیج کامل MVP شامل تمام قابلیت‌های اساسی</div>
+          <div class="pricing-desc">
+            توسعه نسخه اولیه محصول با تمام قابلیت‌های اساسی طی ۱۰ هفته
+          </div>
           <ul class="feature-list">
-            <li>اپلیکیشن React Native (iOS & Android)</li>
+            <li>اپلیکیشن موبایل کامل (iOS & Android)</li>
             <li>پنل مدیریت وب</li>
             <li>سیستم تزریق JavaScript</li>
-            <li>سبد چندبرندی و پرداخت</li>
-            <li>۱۰ هفته توسعه</li>
-            <li>۳ ماه پشتیبانی رایگان</li>
+            <li>سبد خرید چندبرندی</li>
+            <li>سیستم پرداخت امن</li>
+            <li>پشتیبانی سه برند اصلی</li>
+            <li>مستندات فنی کامل</li>
+            <li>سه ماه پشتیبانی رایگان</li>
           </ul>
         </div>
 
-        <div class="pricing-card featured">
-          <div class="pricing-title">نسخه کامل</div>
-          <div class="pricing-amount">
-            $35,000
-            <span class="currency">USD</span>
-          </div>
-          <div class="pricing-desc">نسخه کامل با قابلیت‌های پیشرفته و بهینه‌سازی</div>
-          <ul class="feature-list">
-            <li>تمام قابلیت‌های MVP</li>
-            <li>داشبورد آنالیز پیشرفته</li>
-            <li>Push Notifications</li>
-            <li>سیستم پیشنهاد هوشمند</li>
-            <li>پشتیبانی چندزبانه</li>
-            <li>ویژگی‌های اجتماعی</li>
-            <li>۶ ماه پشتیبانی رایگان</li>
-          </ul>
-        </div>
-
-        <div class="pricing-card">
-          <div class="pricing-title">نگهداری ماهانه</div>
-          <div class="pricing-amount">
+        <div class="pricing-phase maintenance">
+          <div class="phase-label maintenance">فاز دوم</div>
+          <div class="pricing-title">توسعه و نگهداری</div>
+          <div class="pricing-amount maintenance">
             $2,500
             <span class="currency">ماهانه</span>
           </div>
-          <div class="pricing-desc">پشتیبانی و نگهداری مداوم سیستم</div>
+          <div class="pricing-desc">
+            بهبود مداوم، اضافه کردن قابلیت‌های جدید و نگهداری سیستم
+          </div>
           <ul class="feature-list">
-            <li>پشتیبانی فنی و رفع باگ</li>
-            <li>به‌روزرسانی اسکریپت‌های JS</li>
-            <li>مدیریت سرور و پایگاه داده</li>
-            <li>مانیتورینگ عملکرد</li>
-            <li>به‌روزرسانی‌های امنیتی</li>
             <li>اضافه کردن برندهای جدید</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card-grid">
-        <div class="card">
-          <h3>هزینه‌های اضافی</h3>
-          <ul class="feature-list">
-            <li>هاستینگ و سرور: $200-500/ماه</li>
-            <li>درگاه پرداخت Stripe: 2.9% + $0.30 هر تراکنش</li>
-            <li>سرویس ایمیل: $50-100/ماه</li>
-            <li>Push Notifications: $50-100/ماه</li>
-            <li>App Store و Play Store: $99 + $25 سالانه</li>
-            <li>SSL و امنیت: $100-200/سال</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>مدل درآمد پیشنهادی</h3>
-          <ul class="feature-list">
-            <li>کمیسیون از هر سفارش: 3-5%</li>
-            <li>هزینه حمل و نقل: مارژین 10-20%</li>
-            <li>تبلیغات برندها: $500-2000/ماه</li>
-            <li>اشتراک ویژه: $9.99/ماه</li>
-            <li>خدمات ویژه: قیمت‌گذاری متغیر</li>
-            <li>فروش داده (با رعایت حریم خصوصی)</li>
+            <li>بهبود رابط کاربری و تجربه</li>
+            <li>قابلیت‌های پیشرفته (Push Notifications، Analytics)</li>
+            <li>به‌روزرسانی اسکریپت‌های تزریق</li>
+            <li>پشتیبانی فنی و رفع مشکلات</li>
+            <li>مانیتورینگ و بهینه‌سازی عملکرد</li>
+            <li>به‌روزرسانی‌های امنیتی</li>
+            <li>گزارش‌های عملکرد ماهانه</li>
           </ul>
         </div>
       </div>
 
       <div class="card">
-        <h3>جدول زمان‌بندی پرداخت</h3>
-        <div class="process-flow">
-          <div class="process-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h4>شروع پروژه</h4>
-              <p>30% از مبلغ کل ($4,500)</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h4>اتمام فاز اول</h4>
-              <p>40% از مبلغ کل ($6,000)</p>
-            </div>
-          </div>
-          <div class="process-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h4>تحویل نهایی</h4>
-              <p>30% باقی‌مانده ($4,500)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>مزایای انتخاب ما</h3>
-        <div class="card-grid">
-          <div class="card">
-            <h3>✨ تجربه و تخصص</h3>
-            <p>بیش از 5 سال تجربه در توسعه اپلیکیشن‌های موبایل و وب</p>
-          </div>
-          <div class="card">
-            <h3>🚀 تکنولوژی مدرن</h3>
-            <p>استفاده از جدیدترین تکنولوژی‌ها برای عملکرد بهتر</p>
-          </div>
-          <div class="card">
-            <h3>🛡️ امنیت و کیفیت</h3>
-            <p>کد تمیز، تست‌های جامع و استانداردهای امنیتی بالا</p>
-          </div>
-          <div class="card">
-            <h3>📞 پشتیبانی 24/7</h3>
-            <p>پشتیبانی کامل در تمام مراحل پروژه و بعد از تحویل</p>
-          </div>
-        </div>
+        <h3>💡 هزینه‌های عملیاتی اضافی</h3>
+        <ul class="feature-list">
+          <li>سرور و هاستینگ: $200-500 ماهانه</li>
+          <li>درگاه پرداخت Stripe: 2.9% هر تراکنش</li>
+          <li>سرویس ایمیل: $50-100 ماهانه</li>
+          <li>App Store و Play Store: $124 سالانه</li>
+          <li>SSL و خدمات امنیتی: $100-200 سالانه</li>
+        </ul>
       </div>
     </section>
 
@@ -967,7 +906,6 @@
     const progressBar = document.getElementById('progressBar');
     
     let currentSection = 0;
-    let isScrolling = false;
 
     // Update navigation dots
     function updateNavDots(index) {
@@ -986,8 +924,6 @@
 
     // Handle scroll events
     function handleScroll() {
-      if (isScrolling) return;
-      
       const scrollPosition = window.pageYOffset + window.innerHeight / 2;
       
       sections.forEach((section, index) => {
@@ -1008,7 +944,6 @@
     // Navigation dot click handlers
     navDots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        isScrolling = true;
         currentSection = index;
         updateNavDots(index);
         
@@ -1016,71 +951,7 @@
           behavior: 'smooth',
           block: 'start'
         });
-        
-        setTimeout(() => {
-          isScrolling = false;
-        }, 1000);
       });
-    });
-
-    // Touch/swipe support for mobile
-    let startY = 0;
-    let startX = 0;
-
-    document.addEventListener('touchstart', (e) => {
-      startY = e.touches[0].clientY;
-      startX = e.touches[0].clientX;
-    });
-
-    document.addEventListener('touchend', (e) => {
-      if (isScrolling) return;
-      
-      const endY = e.changedTouches[0].clientY;
-      const endX = e.changedTouches[0].clientX;
-      const deltaY = startY - endY;
-      const deltaX = Math.abs(startX - endX);
-      
-      // Only handle vertical swipes
-      if (deltaX > 50) return;
-      
-      if (Math.abs(deltaY) > 50) {
-        if (deltaY > 0 && currentSection < sections.length - 1) {
-          // Swipe up - go to next section
-          navDots[currentSection + 1].click();
-        } else if (deltaY < 0 && currentSection > 0) {
-          // Swipe down - go to previous section
-          navDots[currentSection - 1].click();
-        }
-      }
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (isScrolling) return;
-      
-      switch(e.key) {
-        case 'ArrowDown':
-        case ' ':
-          if (currentSection < sections.length - 1) {
-            e.preventDefault();
-            navDots[currentSection + 1].click();
-          }
-          break;
-        case 'ArrowUp':
-          if (currentSection > 0) {
-            e.preventDefault();
-            navDots[currentSection - 1].click();
-          }
-          break;
-        case 'Home':
-          e.preventDefault();
-          navDots[0].click();
-          break;
-        case 'End':
-          e.preventDefault();
-          navDots[sections.length - 1].click();
-          break;
-      }
     });
 
     // Scroll event listener
@@ -1098,7 +969,7 @@
     // Animation on scroll
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -1110,25 +981,13 @@
     }, observerOptions);
 
     // Observe all cards and elements for animation
-    document.querySelectorAll('.card, .process-step, .timeline-item, .tech-item, .pricing-card').forEach(el => {
+    document.querySelectorAll('.card, .process-step, .timeline-item, .tech-item, .pricing-phase').forEach(el => {
       observer.observe(el);
     });
 
     // Initialize
     updateNavDots(0);
     updateProgressBar();
-
-    // Prevent default touch behaviors that might interfere
-    document.addEventListener('touchmove', (e) => {
-      // Allow scrolling
-    }, { passive: true });
-
-    // Handle orientation change
-    window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        handleScroll();
-      }, 100);
-    });
   </script>
 
 </body>
