@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KIMLAND PLATFORM - Business Benefits & Development Plan</title>
+  <meta name="description" content="Multi-brand fashion platform development roadmap and business benefits" />
+  
+  <!-- Persian Web Fonts -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --secondary: #f8fafc;
+      --accent: #059669;
+      --accent-light: #10b981;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      --radius: 12px;
+      --radius-lg: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --bg-alt: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --border: #334155;
+        --border-light: #475569;
+        --secondary: #1e293b;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      direction: rtl;
+    }
+
+    .en-font {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav {
+        background: rgba(15, 23, 42, 0.95);
+      }
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-progress {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-dot.active {
+      background: var(--primary);
+      transform: scale(1.3);
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-right: 0.5rem;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+      z-index: 101;
+      transition: width 0.1s ease;
+    }
+
+    /* Main Container */
+    .container {
+      padding-top: 4rem;
+      min-height: 100vh;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    .section {
+      min-height: 100vh;
+      padding: 3rem 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section:nth-child(even) {
+      background: var(--bg-alt);
+      margin: 0 -1rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Business Case Section */
+    .business-case {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .business-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .business-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .value-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .metric-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Phase Cards */
+    .phase-timeline {
+      display: grid;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .phase-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .phase-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .phase-info {
+      flex: 1;
+    }
+
+    .phase-number {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-left: 1rem;
+    }
+
+    .phase-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .phase-duration {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .phase-cost {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .phase-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      padding: 1rem;
+      background: var(--secondary);
+      border-radius: var(--radius);
+      border-right: 3px solid var(--accent);
+    }
+
+    .business-impact {
+      background: rgba(5, 150, 105, 0.08);
+      border: 1px solid rgba(5, 150, 105, 0.2);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .impact-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .impact-list {
+      list-style: none;
+      margin: 0;
+    }
+
+    .impact-list li {
+      padding: 0.25rem 0;
+      color: var(--text-secondary);
+      position: relative;
+      padding-right: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .impact-list li::before {
+      content: '→';
+      position: absolute;
+      right: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .deliverable-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .deliverable-card:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    .deliverable-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Investment Overview */
+    .investment-overview {
+      background: var(--bg);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .investment-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .total-cost {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-info {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .roi-projection {
+      background: rgba(5, 150, 105, 0.1);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      margin-top: 1.5rem;
+    }
+
+    .roi-title {
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .roi-numbers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .roi-item {
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+    }
+
+    .roi-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .roi-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Feature Benefits */
+    .feature-benefits {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .benefit-category {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-category:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-icon {
+      width: 3rem;
+      height: 3rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .category-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .benefit-items {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--secondary);
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-item:hover {
+      background: rgba(59, 130, 246, 0.05);
+      border-right: 3px solid var(--primary-light);
+    }
+
+    .benefit-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+
+    .benefit-content {
+      flex: 1;
+    }
+
+    .benefit-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+    }
+
+    .benefit-desc {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Development Phases */
+    .development-phases {
+      margin: 3rem 0;
+    }
+
+    .phase-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      background: var(--secondary);
+      padding: 1rem 2rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .phase-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      flex: 1;
+    }
+
+    .phase-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      left: 60%;
+      width: 80%;
+      height: 2px;
+      background: var(--border);
+    }
+
+    .step-number {
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Implementation Details */
+    .implementation-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin: 2rem 0;
+    }
+
+    .implementation-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .implementation-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .impl-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .impl-badge {
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .impl-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .impl-timeline {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 0;
+    }
+
+    .feature-list li {
+      padding: 0.5rem 0;
+      color: var(--text-secondary);
+      position: relative;
+      padding-right: 1.25rem;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      right: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 0.875rem;
+    }
+
+    /* Final Summary */
+    .final-summary {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.08) 0%, rgba(5, 150, 105, 0.08) 100%);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .summary-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .summary-content {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .summary-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 640px) {
+      .section {
+        padding: 4rem 2rem;
+      }
+      
+      .section:nth-child(even) {
+        margin: 0 -2rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+
+      .benefit-items {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .implementation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.25rem;
+      }
+
+      .phase-timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .benefit-items {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: slideIn 0.6s ease-out;
+    }
+
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .mt-2 { margin-top: 1rem; }
+    .mb-2 { margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Kimland Platform Development</div>
+      <div class="nav-progress">
+        <span class="nav-label">Progress:</span>
+        <div class="nav-dot active" data-section="0"></div>
+        <div class="nav-dot" data-section="1"></div>
+        <div class="nav-dot" data-section="2"></div>
+        <div class="nav-dot" data-section="3"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Section 1: Business Case & Vision -->
+    <section class="section" id="section-0">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <h2 class="section-title">Multi-Brand Fashion Platform</h2>
+        <p class="section-subtitle">
+          راه‌حلی که مشتری‌ها می‌تونن از چند برند معتبر در یک اپلیکیشن خرید کنند
+        </p>
+      </div>
+
+      <div class="business-case">
+        <h1 class="business-title">تجربه خرید یکپارچه از چند برند</h1>
+        <p class="business-subtitle">
+          پلتفرمی که بیزینس شما رو به مرکز خرید دیجیتال تبدیل می‌کنه - جایی که مشتری‌ها می‌تونن از Zara، Mango، H&M و سایر برندها در یک سبد خرید کنن.
+        </p>
+
+        <div class="value-metrics">
+          <div class="metric-card">
+            <div class="metric-value">۵ برند</div>
+            <div class="metric-label">یکپارچه در یک اپ</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">۱ سبد خرید</div>
+            <div class="metric-label">برای همه برندها</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">۱ پرداخت</div>
+            <div class="metric-label">پرداخت ساده</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">وب‌سایت گردی</div>
+            <div class="metric-label">افزایش فروش</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-benefits">
+        <div class="benefit-category">
+          <div class="category-header">
+            <div class="category-icon">💼</div>
+            <div>
+              <div class="category-title">مزایای اجرایی</div>
+              <div class="category-subtitle">بهبود فرآیندهای بیزینس</div>
+            </div>
+          </div>
+          <div class="benefit-items">
+            <div class="benefit-item">
+              <div class="benefit-icon">⚡</div>
+              <div class="benefit-content">
+                <div class="benefit-title">کاهش زمان راه‌اندازی</div>
+                <div class="benefit-desc">شروع فروش از هفته ۱۲ بجای انتظار ۷ ماه</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📊</div>
+              <div class="benefit-content">
+                <div class="benefit-title">مدیریت متمرکز سفارش‌ها</div>
+                <div class="benefit-desc">کنترل کامل روی همه سفارشات از یک پنل</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🎯</div>
+              <div class="benefit-content">
+                <div class="benefit-title">مزیت رقابتی</div>
+                <div class="benefit-desc">پلتفرم خرید چندبرندی </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-category">
+          <div class="category-header">
+            <div class="category-icon">💰</div>
+            <div>
+              <div class="category-title">مزایای مالی</div>
+              <div class="category-subtitle">افزایش درآمد و سودآوری</div>
+            </div>
+          </div>
+          <div class="benefit-items">
+            <div class="benefit-item">
+              <div class="benefit-icon">📈</div>
+              <div class="benefit-content">
+                <div class="benefit-title">افزایش میانگین سبد خرید</div>
+                <div class="benefit-desc">خرید از چند برند در یک تراکنش</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🔄</div>
+              <div class="benefit-content">
+                <div class="benefit-title">جریان نقدی بهتر</div>
+                <div class="benefit-desc">پرداخت فوری و ردیابی دقیق سفارشات</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💎</div>
+              <div class="benefit-content">
+                <div class="benefit-title">افزایش ارزش مشتری</div>
+                <div class="benefit-desc">وفاداری بیشتر و خرید مکرر</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Development Phases -->
+    <section class="section" id="section-1">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <h2 class="section-title">مراحل توسعه و تحویلی‌ها</h2>
+        <p class="section-subtitle">هر مرحله ارزش مشخصی ایجاد می‌کنه</p>
+      </div>
+
+      <div class="phase-progress">
+        <div class="phase-step">
+          <div class="step-number">۱</div>
+          <div class="step-label">اپلیکیشن مشتری<br>۱۲ هفته</div>
+        </div>
+        <div class="phase-step">
+          <div class="step-number">2</div>
+          <div class="step-label">زیرساخت مالی و اجرایی بیزینس<br>۶ هفته</div>
+        </div>
+        <div class="phase-step">
+          <div class="step-number">3</div>
+          <div class="step-label">امکانات تکمیلی<br>۴ هفته</div>
+        </div>
+        <div class="phase-step">
+          <div class="step-number">4</div>
+          <div class="step-label">امکانات پیشرفته<br>۶ هفته</div>
+        </div>
+      </div>
+
+      <div class="phase-timeline">
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-info">
+              <div class="phase-title">Phase 1: Revenue MVP</div>
+            </div>
+            <div class="phase-number">1</div>
+          </div>
+          
+          <div class="phase-description">
+            "ساخت پلتفرم کاملی که مشتری‌ها بتونن از ۵ برند معتبر فشن خرید کنن - آماده درآمدزایی"
+          </div>
+
+          <div class="business-impact">
+            <div class="impact-title">خروجی:</div>
+            <ul class="impact-list">
+              <li>شروع فروش فوری از هفته ۱۲</li>
+              <li>مزیت رقابتی در بازار</li>
+              <li>مدیریت حرفه‌ای سفارشات</li>
+              <li>جذب مشتری و ارتباط با مشتری‌ها</li>
+            </ul>
+          </div>
+
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <div class="deliverable-title">اپلیکیشن موبایل کامل</div>
+              <div class="deliverable-desc">React Native برای iOS و Android با WebView بهینه‌شده</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">۵ برند فشن یکپارچه</div>
+              <div class="deliverable-desc">Zara, H&M, Mango و ۲ برند اضافی</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">سبد خرید چندبرندی</div>
+              <div class="deliverable-desc">خرید همزمان از چند برند در یک تراکنش</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">پنل مدیریت سفارشات</div>
+              <div class="deliverable-desc">سیستم مدیریت به سبک فروشگاه‌های آنلاین</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-info">
+              <div class="phase-title">Phase 2: Business Intelligence</div>
+            </div>
+            <div class="phase-number">2</div>
+          </div>
+          
+          <div class="phase-description">
+            "ابزارهای گزارش پیشرفته برای درک عملکرد مالی و بهینه‌سازی سودآوری"
+          </div>
+
+          <div class="business-impact">
+            <div class="impact-title">تأثیر بر کسب‌وکار:</div>
+            <ul class="impact-list">
+              <li>تصمیم‌گیری مبتنی بر اطلاعات</li>
+              <li>شفافیت کامل در سود و زیان</li>
+              <li>گزارش‌گیری حرفه‌ای</li>
+              <li>بهینه‌سازی حاشیه سود</li>
+            </ul>
+          </div>
+
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <div class="deliverable-title">نرخ ارز زنده</div>
+              <div class="deliverable-desc">محاسبه دقیق سود/زیان در TRY و IRR</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">داشبورد مالی</div>
+              <div class="deliverable-desc">نمای کلی از درآمد، سود ماهانه و پیش‌بینی</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">خروجی Excel/PDF</div>
+              <div class="deliverable-desc">گزارش‌های آماده برای ارائه و محاسبات</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">ردیابی ۷ مرحله‌ای</div>
+              <div class="deliverable-desc">نظارت کامل بر وضعیت سفارش تا تحویل</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-info">
+              <div class="phase-title">Phase 3: Customer Retention</div>
+              <div class="phase-cost">بهبود تجربه مشتری</div>
+            </div>
+            <div class="phase-number">3</div>
+          </div>
+          
+          <div class="phase-description">
+            "سیستم‌های ارتباطی پیشرفته برای حفظ مشتری و ایجاد تجربه حرفه‌ای"
+          </div>
+
+          <div class="business-impact">
+            <div class="impact-title">تأثیر بر کسب‌وکار:</div>
+            <ul class="impact-list">
+              <li>امکان افزایش در خرید مکرر مشتریان</li>
+              <li>امکان کاهش در تماس‌های پشتیبانی</li>
+              <li>تقویت برند</li>
+              <li>اتوماسیون ارتباط با مشتری</li>
+            </ul>
+          </div>
+
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <div class="deliverable-title">سیستم ایمیل پیشرفته</div>
+              <div class="deliverable-desc">ایمیل‌های تأیید، وضعیت و تحویل اتوماتیک</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">پیامک هوشمند</div>
+              <div class="deliverable-desc">اطلاع‌رسانی مهم و به‌موقع به مشتریان</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">ردیابی در اپ</div>
+              <div class="deliverable-desc">نمایش وضعیت سفارش در پروفایل کاربر</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">مدیریت ارتباطات</div>
+              <div class="deliverable-desc">قالب‌های پیام و ارسال پیام‌های گروهی به مشتری‌ها</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-info">
+              <div class="phase-title">Phase 4: Platform Expansion</div>
+              <div class="phase-cost">گسترش و کنترل کامل</div>
+            </div>
+            <div class="phase-number">4</div>
+          </div>
+          
+          <div class="phase-description">
+            "سیستم موجودی مستقل و مدیریت سطوح دسترسی برای کنترل کامل بیزینس"
+          </div>
+
+          <div class="business-impact">
+            <div class="impact-title">تأثیر بر کسب‌وکار:</div>
+            <ul class="impact-list">
+              <li>متنوع‌سازی منابع درآمد</li>
+              <li>حاشیه سود بالاتر روی محصولات اختصاصی</li>
+              <li>کنترل کامل روی عملیات فروش</li>
+              <li>آمادگی برای رشد</li>
+            </ul>
+          </div>
+
+          <div class="deliverables-grid">
+            <div class="deliverable-card">
+              <div class="deliverable-title">سیستم موجودی مستقل</div>
+              <div class="deliverable-desc">مدیریت (اضافه و حذف) محصولات اختصاصی و کنترل قیمت</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">مدیریت دسترسی</div>
+              <div class="deliverable-desc">دسترسی‌های مختلف برای تیم‌های مختلف</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">گزارش جامع</div>
+              <div class="deliverable-desc"> گزارش‌های تفصیلی عملکرد و سودآوری (بانک)</div>
+            </div>
+            <div class="deliverable-card">
+              <div class="deliverable-title">پلتفرم Enterprise</div>
+              <div class="deliverable-desc">آمادگی برای پردازش سفارش‌های بیشتر در ماه</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Implementation Approach -->
+    <section class="section" id="section-2">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <h2 class="section-title">رویکرد اجرایی</h2>
+        <p class="section-subtitle">هر مرحله چطوری بر اساس فیدبک واقعی ساخته می‌شه</p>
+      </div>
+
+      <div class="implementation-grid">
+        <div class="implementation-card">
+          <div class="impl-header">
+            <div class="impl-badge">هفته ۱ تا ۱۲</div>
+            <div class="impl-title">شروع اولیه</div>
+          </div>
+          <div class="impl-timeline">فوکوس: ساخت اپ مشتری</div>
+          <ul class="feature-list">
+            <li>اپلیکیشن موبایل با ۵ برند</li>
+            <li>سیستم پرداخت امن</li>
+            <li>پنل مدیریت اولیه</li>
+            <li>ثبت و پردازش سفارش</li>
+            <li>احراز هویت کاربران</li>
+            <li>نوتیفیکیشن</li>
+          </ul>
+        </div>
+
+        <div class="implementation-card">
+          <div class="impl-header">
+            <div class="impl-badge">هقته ۱۳ تا ۱۸</div>
+            <div class="impl-title">زیرساخت مدیریت بیزینس</div>
+          </div>
+          <div class="impl-timeline">فوکوس: بهینه‌سازی سیستم مالی</div>
+          <ul class="feature-list">
+            <li>API نرخ ارز به روز</li>
+            <li>محاسبه سود/زیان</li>
+            <li>داشبورد مالی</li>
+            <li>خروجی Excel/PDF</li>
+            <li>ردیابی ۷ مرحله‌ای سفارش</li>
+            <li>گزارش‌سازی</li>
+          </ul>
+        </div>
+
+        <div class="implementation-card">
+          <div class="impl-header">
+            <div class="impl-badge">هفته ۱۹ تا ۲۲</div>
+            <div class="impl-title">حفظ مشتری</div>
+          </div>
+          <div class="impl-timeline">فوکوس: تجربه کاربری</div>
+          <ul class="feature-list">
+            <li>سیستم ایمیل پیشرفته</li>
+            <li>یکپارچگی SMS</li>
+            <li>نمایش وضعیت در اپ</li>
+            <li>تنظیمات اطلاع‌رسانی</li>
+            <li>تاریخچه سفارشات</li>
+            <li>ابزارهای پشتیبانی مشتری</li>
+          </ul>
+        </div>
+
+        <div class="implementation-card">
+          <div class="impl-header">
+            <div class="impl-badge">هفته ۲۳ تا ۲۸</div>
+            <div class="impl-title">گسترش پلتفرم</div>
+          </div>
+          <div class="impl-timeline">فوکوس: کنترل کامل</div>
+          <ul class="feature-list">
+            <li>سیستم موجودی مستقل</li>
+            <li>مدیریت محصولات CRUD</li>
+            <li>کنترل نقش‌ها و دسترسی‌ها</li>
+            <li>سبد خرید ترکیبی</li>
+            <li>گزارشات مالی جامع</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-benefits">
+        <div class="benefit-category">
+          <div class="category-header">
+            <div class="category-icon">🎯</div>
+            <div>
+              <div class="category-title">مزایای رویکرد مرحله‌ای</div>
+              <div class="category-subtitle">چرا این روش برای کسب‌وکار بهتر است</div>
+            </div>
+          </div>
+          <div class="benefit-items">
+            <div class="benefit-item">
+              <div class="benefit-icon">💰</div>
+              <div class="benefit-content">
+                <div class="benefit-title">درآمد از ماه اول</div>
+                <div class="benefit-desc">بجای انتظار ۷ ماه، از ماه ۳ شروع به درآمدزایی از اپ می‌کنید</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📊</div>
+              <div class="benefit-content">
+                <div class="benefit-title">توسعه مبتنی بر داده</div>
+                <div class="benefit-desc">هر مرحله بر اساس فیدبک واقعی مشتری‌ها بهبود پیدا می‌کنه</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">⚖️</div>
+              <div class="benefit-content">
+                <div class="benefit-title">ریسک متعادل</div>
+                <div class="benefit-desc">هزینه‌ها مرحله‌ای انجام میشه، فروش همزمان اتفاق می‌افته</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Investment & ROI -->
+    <section class="section" id="section-3">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <h2 class="section-title">هزینه راه‌اندازی</h2>
+      </div>
+
+      <div class="investment-overview">
+        <h3 class="investment-title">خلاصه کل سرمایه‌گذاری</h3>
+        <div class="total-cost">190,000 TRY</div>
+        <div class="timeline-info">طی ۲۸ هفته (۷ ماه)</div>
+        
+        <div class="roi-projection">
+        </div>
+      </div>
+
+      <div class="feature-benefits">
+        <div class="benefit-category">
+          <div class="category-header">
+            <div class="category-icon">📈</div>
+            <div>
+              <div class="category-title">مزایای هر مرحله</div>
+              <div class="category-subtitle">ارزش‌آفرینی مرحله‌ای و قابل‌اندازه‌گیری</div>
+            </div>
+          </div>
+          <div class="benefit-items">
+            <div class="benefit-item">
+              <div class="benefit-icon">🚀</div>
+              <div class="benefit-content">
+                <div class="benefit-title">فاز ۱: ورود سریع به بازار</div>
+                <div class="benefit-desc">شروع فروش در کمترین زمان، فیدبک گرفتن سریع</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🧠</div>
+              <div class="benefit-content">
+                <div class="benefit-title">فاز ۲: تصمیم‌گیری با اطلاعات واقعی</div>
+                <div class="benefit-desc">بهینه‌سازی سود از طریق داده‌های دقیق</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💎</div>
+              <div class="benefit-content">
+                <div class="benefit-title">فاز ۳: وفاداری مشتری</div>
+                <div class="benefit-desc">جذب مشتری‌ها با امکانات جدید اپ</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🏢</div>
+              <div class="benefit-content">
+                <div class="benefit-title">فاز ۴: رشد مقیاس‌پذیر</div>
+                <div class="benefit-desc">آمادگی برای رشد  و اضافه شدن موجودی جنس</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-category">
+          <div class="category-header">
+            <div class="category-icon">🔧</div>
+            <div>
+              <div class="category-title">قابلیت‌های کلیدی نهایی</div>
+              <div class="category-subtitle">چیزی که  در پایان خواهید داشت</div>
+            </div>
+          </div>
+          <div class="benefit-items">
+            <div class="benefit-item">
+              <div class="benefit-icon">📱</div>
+              <div class="benefit-content">
+                <div class="benefit-title">اپلیکیشن موبایل کامل</div>
+                <div class="benefit-desc">iOS و Android با WebView بهینه‌شده و UX حرفه‌ای</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🏪</div>
+              <div class="benefit-content">
+                <div class="benefit-title">۵ برند فشن یکپارچه</div>
+                <div class="benefit-desc">Zara, H&M, Mango + ۲ برند در یک سبد خرید</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💻</div>
+              <div class="benefit-content">
+                <div class="benefit-title">پنل مدیریت Enterprise</div>
+                <div class="benefit-desc">کنترل کامل سفارشات، کاربران و محصولات</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">💱</div>
+              <div class="benefit-content">
+                <div class="benefit-title">سیستم چندارزی</div>
+                <div class="benefit-desc">پشتیبانی TRY/IRR با نرخ زنده و محاسبه سود</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📊</div>
+              <div class="benefit-content">
+                <div class="benefit-title">گزارش‌گیری پیشرفته</div>
+                <div class="benefit-desc">Excel/PDF export، آنالیتیک و داشبورد مالی</div>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">📦</div>
+              <div class="benefit-content">
+                <div class="benefit-title">موجودی مستقل</div>
+                <div class="benefit-desc">فروش محصولات اختصاصی با حاشیه سود بالاتر</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="final-summary">
+        <h3 class="summary-title">خلاصه</h3>
+        <div class="summary-content">
+          این رویکرد مرحله‌ای امکان راه‌اندازی سریع و رشد پلتفرم بر اساس فیدبک واقعی مشتری‌ها و درآمد رو فراهم می‌کنه. شما از ماه سوم اپ فعالی خواهید داشت و قابلیت‌های Enterprise به تدریج و با رشد بیزینس اضافه می‌شن.
+        </div>
+        
+        <div class="summary-stats">
+          <div class="stat-item">
+            <div class="stat-value">190K TRY</div>
+            <div class="stat-label">سرمایه‌گذاری کل</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">۲۸ هفته</div>
+            <div class="stat-label">زمان توسعه کامل</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">11K TRY</div>
+            <div class="stat-label">هزینه نگهداری ماهانه</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">ماه ۲-۳</div>
+            <div class="stat-label">شروع بازگشت سرمایه</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="implementation-card" style="margin-top: 2rem;">
+        <div class="impl-header">
+          <div class="impl-badge">نگهداری و توسعه امکانات پیشرفته</div>
+          <div class="impl-title">پشتیبانی مداوم</div>
+        </div>
+        <div class="impl-timeline">11,000 TRY ماهانه پس از تکمیل و تحویل</div>
+        <ul class="feature-list">
+          <li>نظارت بر وضعیت WebView و به‌روزرسانی های لازم برای رفع ایرادات نمایش وب‌سایت برندهای فشن</li>
+          <li>زیرساخت سرور و فراهم کردن بستر افزایش تعداد مشتری</li>
+          <li>پشتیبانی فنی End-User و رفع باگ</li>
+          <li>بهبود قابلیت‌ها</li>
+          <li>اضافه کردن برند جدید</li>
+          <li>آموزش استفاده به تیم و مشاوره و ایده‌پردازی برای توسعه پروژه</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Navigation and scroll handling
+    const sections = document.querySelectorAll('.section');
+    const navDots = document.querySelectorAll('.nav-dot');
+    const progressBar = document.getElementById('progressBar');
+    
+    let currentSection = 0;
+
+    function updateNavigation(index) {
+      navDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    function updateProgressBar() {
+      const scrollTop = window.pageYOffset;
+      const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / documentHeight) * 100;
+      progressBar.style.width = Math.min(scrolled, 100) + '%';
+    }
+
+    function handleScroll() {
+      const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+      
+      sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition <= sectionTop + sectionHeight) {
+          if (currentSection !== index) {
+            currentSection = index;
+            updateNavigation(index);
+          }
+        }
+      });
+      
+      updateProgressBar();
+    }
+
+    // Navigation click handlers
+    navDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSection = index;
+        updateNavigation(index);
+        
+        sections[index].scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+
+    // Optimized scroll listener
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -10% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.phase-card, .implementation-card, .benefit-category, .business-case, .investment-overview, .final-summary').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Staggered animations for benefit items
+    document.querySelectorAll('.benefit-item').forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.1}s`;
+    });
+
+    // Staggered animations for deliverable cards
+    document.querySelectorAll('.deliverable-card').forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.12}s`;
+    });
+
+    // Phase card hover effects
+    document.querySelectorAll('.phase-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.borderColor = 'var(--primary-light)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.borderColor = 'var(--border)';
+      });
+    });
+
+    // Initialize
+    updateNavigation(0);
+    updateProgressBar();
+
+    // Add loading state for dynamic content
+    setTimeout(() => {
+      document.body.style.opacity = '1';
+    }, 100);
+
+    // Add smooth reveal for ROI numbers
+    const roiObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const roiItems = entry.target.querySelectorAll('.roi-item');
+          roiItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.style.transform = 'scale(1.05)';
+              setTimeout(() => {
+                item.style.transform = 'scale(1)';
+              }, 200);
+            }, index * 150);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.roi-numbers').forEach(el => {
+      roiObserver.observe(el);
+    });
+
+  </script>
+
+</body>
+</html>
