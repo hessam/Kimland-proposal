@@ -30,6 +30,58 @@
             overflow-x: hidden;
         }
 
+        /* Global Header */
+        .global-header {
+            background: #8FBC8F;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(143, 188, 143, 0.2);
+        }
+
+        .global-header .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .global-header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .global-header .home-nav-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .global-header .home-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Adjust content to account for global header */
+        .screens-wrapper {
+            margin-top: 60px;
+        }
+
         .phone-container {
             width: 375px;
             height: 812px;
@@ -53,7 +105,7 @@
 
         .screen {
             width: 100%;
-            height: 100%;
+            height: 95%;
             background: white;
             border-radius: 32px;
             overflow: hidden;
@@ -310,7 +362,7 @@
         .cart-summary {
             background: #FAFAFA;
             padding: 20px;
-            margin: 20px -20px -20px;
+            margin: 20px -20px 66px;
         }
 
         .summary-row {
@@ -560,6 +612,14 @@
     </style>
 </head>
 <body>
+    <!-- Global Header -->
+    <div class="global-header">
+        <a href="../index.html" class="logo">KimLand</a>
+        <div class="nav-actions">
+            <a href="../index.html" class="home-nav-btn" title="Back to Home">⌂</a>
+        </div>
+    </div>
+
     <div class="screens-wrapper">
         <!-- Search Results -->
         <div class="phone-container">

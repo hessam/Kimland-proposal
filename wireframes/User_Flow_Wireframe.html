@@ -21,6 +21,58 @@
             line-height: 1.5;
         }
 
+        /* Global Header */
+        .global-header {
+            background: #8FBC8F;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(143, 188, 143, 0.2);
+        }
+
+        .global-header .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .global-header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .global-header .home-nav-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .global-header .home-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Adjust container to account for global header */
+        .container {
+            padding-top: 60px;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -306,6 +358,14 @@
     </style>
 </head>
 <body>
+    <!-- Global Header -->
+    <div class="global-header">
+        <a href="../index.html" class="logo">KimLand</a>
+        <div class="nav-actions">
+            <a href="../index.html" class="home-nav-btn" title="Back to Home">⌂</a>
+        </div>
+    </div>
+
     <div class="container">
         <div class="header">
             <h1>KimLand App - User Flow & Navigation Structure</h1>
