@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+            .status-bar {
+            height: 44px;
+            background: #FAFAFA;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }set="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimLand App - Additional Pages</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Global Header */
+        .global-header {
+            background: #8FBC8F;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(143, 188, 143, 0.2);
+        }
+
+        .global-header .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .global-header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .global-header .home-nav-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .global-header .home-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Adjust content to account for global header */
+        .screens-wrapper {
+            margin-top: 60px;
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            margin: 20px auto;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .screens-wrapper {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .screen {
+            width: 100%;
+            height: 95%;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .header {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            background: #FAFAFA;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            color: #666666;
+        }
+
+        .home-btn {
+            width: 32px;
+            height: 32px;
+            background: #8FBC8F;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            color: white;
+            margin-left: 8px;
+        }
+
+        .page-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        /* Search Results */
+        .search-header {
+            padding: 16px 20px;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 40px;
+            background: #FAFAFA;
+            border: 1px solid #f0f0f0;
+            padding: 0 16px 0 40px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: #666666;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-tab {
+            padding: 6px 12px;
+            background: #FAFAFA;
+            border: none;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .filter-tab.active {
+            background: #8FBC8F;
+            color: white;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 140px;
+            background: #FAFAFA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .heart-btn {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-brand {
+            font-size: 10px;
+            color: #666666;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .product-title {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        /* Cart */
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: #FAFAFA;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-brand {
+            font-size: 11px;
+            color: #666666;
+            margin-bottom: 4px;
+        }
+
+        .cart-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .cart-details {
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 8px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .cart-price {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .cart-summary {
+            background: #FAFAFA;
+            padding: 40px;
+            margin: 20px -20px 66px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .summary-total {
+            font-size: 16px;
+            font-weight: 600;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 12px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            height: 48px;
+            background: #8FBC8F;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 16px;
+            cursor: pointer;
+        }
+
+        /* Checkout */
+        .checkout-step {
+            margin-bottom: 24px;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .address-card {
+            background: #FAFAFA;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .address-card.selected {
+            border-color: #8FBC8F;
+            background: #f0f8f0;
+        }
+
+        .address-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .address-details {
+            font-size: 12px;
+            color: #666666;
+            line-height: 1.4;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: #FAFAFA;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .payment-method.selected {
+            border-color: #8FBC8F;
+            background: #f0f8f0;
+        }
+
+        .payment-icon {
+            width: 32px;
+            height: 20px;
+            background: #666666;
+            border-radius: 4px;
+        }
+
+        .payment-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Profile */
+        .profile-header {
+            text-align: center;
+            padding: 24px 20px;
+            background: #FAFAFA;
+            margin: -20px -20px 24px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #8FBC8F;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .profile-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .profile-email {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: #FAFAFA;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .menu-section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666666;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-icon {
+            width: 20px;
+            height: 20px;
+            background: #666666;
+            border-radius: 2px;
+        }
+
+        .menu-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .menu-arrow {
+            color: #666666;
+            font-size: 14px;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 8px;
+            right: 8px;
+            height: 80px;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 0 0 32px 32px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: #666666;
+            border-radius: 2px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        .page-label {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Global Header -->
+    <div class="global-header">
+        <a href="../index.html" class="logo">KimLand</a>
+        <div class="nav-actions">
+            <a href="../index.html" class="home-nav-btn" title="Back to Home">⌂</a>
+        </div>
+    </div>
+
+    <div class="screens-wrapper">
+        <!-- Search Results -->
+        <div class="phone-container">
+            <div class="page-label">Search Results</div>
+            <div class="screen">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <span>●●●○○</span>
+                </div>
+
+                <div class="header">
+                    <div style="display: flex; align-items: center;">
+                        <button class="back-btn">←</button>
+                        <a href="../index.html" class="home-btn" title="Back to Home">⌂</a>
+                    </div>
+                    <div class="page-title">جستجو</div>
+                    <div></div>
+                </div>
+
+                <div class="search-header">
+                    <div class="search-bar">
+                        <div class="search-icon"></div>
+                        <input type="text" class="search-input" placeholder="پیراهن مردانه">
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">همه</button>
+                        <button class="filter-tab">قیمت</button>
+                        <button class="filter-tab">برند</button>
+                        <button class="filter-tab">رنگ</button>
+                        <button class="filter-tab">سایز</button>
+                    </div>
+                </div>
+
+                <div class="results-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Zara</div>
+                            <div class="product-title">پیراهن کتان سفید</div>
+                            <div class="product-price">₺299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Mango</div>
+                            <div class="product-title">پیراهن چهارخانه</div>
+                            <div class="product-price">₺399</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">H&M</div>
+                            <div class="product-title">پیراهن دنیم آبی</div>
+                            <div class="product-price">₺249</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">KimLand</div>
+                            <div class="product-title">پیراهن کلاسیک مشکی</div>
+                            <div class="product-price">₺350</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Zara</div>
+                            <div class="product-title">پیراهن راه راه</div>
+                            <div class="product-price">₺329</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Mango</div>
+                            <div class="product-title">پیراهن لینن کرم</div>
+                            <div class="product-price">₺279</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">خانه</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">برندها</div>
+                    </div>
+                    <div class="nav-item" style="color: #8FBC8F;">
+                        <div class="nav-icon" style="background: #8FBC8F;"></div>
+                        <div class="nav-label" style="color: #8FBC8F;">جستجو</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">سبد خرید</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">حساب کاربری</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shopping Cart -->
+        <div class="phone-container">
+            <div class="page-label">Shopping Cart</div>
+            <div class="screen">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <span>●●●○○</span>
+                </div>
+
+                <div class="header">
+                    <div style="display: flex; align-items: center;">
+                        <button class="back-btn">←</button>
+                        <a href="../index.html" class="home-btn" title="Back to Home">⌂</a>
+                    </div>
+                    <div class="page-title">سبد خرید (۳ آیتم)</div>
+                    <div></div>
+                </div>
+
+                <div class="content">
+                    <div class="cart-item">
+                        <div class="cart-item-image"></div>
+                        <div class="cart-item-info">
+                            <div class="cart-brand">Zara</div>
+                            <div class="cart-title">پیراهن کتان سفید</div>
+                            <div class="cart-details">سایز: M • رنگ: سفید</div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn">-</button>
+                                <span>۱</span>
+                                <button class="qty-btn">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-price">₺299</div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item-image"></div>
+                        <div class="cart-item-info">
+                            <div class="cart-brand">Mango</div>
+                            <div class="cart-title">کت بلیزر مشکی</div>
+                            <div class="cart-details">سایز: L • رنگ: مشکی</div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn">-</button>
+                                <span>۱</span>
+                                <button class="qty-btn">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-price">₺599</div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item-image"></div>
+                        <div class="cart-item-info">
+                            <div class="cart-brand">KimLand</div>
+                            <div class="cart-title">کیف دستی چرمی</div>
+                            <div class="cart-details">رنگ: قهوه‌ای</div>
+                            <div class="quantity-controls">
+                                <button class="qty-btn">-</button>
+                                <span>۱</span>
+                                <button class="qty-btn">+</button>
+                            </div>
+                        </div>
+                        <div class="cart-price">₺449</div>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>جمع کل محصولات:</span>
+                        <span>₺1,347</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>هزینه ارسال:</span>
+                        <span>₺50</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>تخفیف:</span>
+                        <span style="color: #e74c3c;">-₺100</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>قابل پرداخت:</span>
+                        <span>₺1,297</span>
+                    </div>
+                    <button class="checkout-btn">ادامه خرید</button>
+                </div>
+
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">خانه</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">برندها</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">جستجو</div>
+                    </div>
+                    <div class="nav-item" style="color: #8FBC8F;">
+                        <div class="nav-icon" style="background: #8FBC8F;"></div>
+                        <div class="nav-label" style="color: #8FBC8F;">سبد خرید</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">حساب کاربری</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout -->
+        <div class="phone-container">
+            <div class="page-label">Checkout</div>
+            <div class="screen">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <span>●●●○○</span>
+                </div>
+
+                <div class="header">
+                    <div style="display: flex; align-items: center;">
+                        <button class="back-btn">←</button>
+                        <a href="../index.html" class="home-btn" title="Back to Home">⌂</a>
+                    </div>
+                    <div class="page-title">تسویه حساب</div>
+                    <div></div>
+                </div>
+
+                <div class="content">
+                    <div class="checkout-step">
+                        <div class="step-title">آدرس تحویل</div>
+                        <div class="address-card selected">
+                            <div class="address-name">آدرس منزل</div>
+                            <div class="address-details">
+                                تهران، خیابان ولیعصر، پلاک ۱۲۳<br>
+                                کدپستی: ۱۹۱۶۹۱۳۴۵۱
+                            </div>
+                        </div>
+                        <div class="address-card">
+                            <div class="address-name">آدرس محل کار</div>
+                            <div class="address-details">
+                                تهران، میدان تجریش، ساختمان پارس<br>
+                                کدپستی: ۱۹۱۶۹۱۳۴۵۱
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-step">
+                        <div class="step-title">روش پرداخت</div>
+                        <div class="payment-method selected">
+                            <div class="payment-icon"></div>
+                            <div class="payment-text">کارت بانکی</div>
+                        </div>
+                        <div class="payment-method">
+                            <div class="payment-icon"></div>
+                            <div class="payment-text">پرداخت در محل</div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-step">
+                        <div class="step-title">خلاصه سفارش</div>
+                        <div class="summary-row">
+                            <span>۳ محصول</span>
+                            <span>₺1,347</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>هزینه ارسال</span>
+                            <span>₺50</span>
+                        </div>
+                        <div class="summary-row" style="color: #e74c3c;">
+                            <span>تخفیف</span>
+                            <span>-₺100</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>مبلغ نهایی</span>
+                            <span>₺1,297</span>
+                        </div>
+                    </div>
+
+                    <button class="checkout-btn" style="margin-top: 24px;">ثبت سفارش</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="phone-container">
+            <div class="page-label">User Profile</div>
+            <div class="screen">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <span>●●●○○</span>
+                </div>
+
+                <div class="header">
+                    <div style="display: flex; align-items: center;">
+                        <button class="back-btn">←</button>
+                        <a href="../index.html" class="home-btn" title="Back to Home">⌂</a>
+                    </div>
+                    <div class="page-title">حساب کاربری</div>
+                    <div></div>
+                </div>
+
+                <div class="content">
+                    <div class="profile-header">
+                        <div class="profile-avatar">علی</div>
+                        <div class="profile-name">علی احمدی</div>
+                        <div class="profile-email">ali.ahmadi@email.com</div>
+                    </div>
+
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-number">۱۲</div>
+                            <div class="stat-label">سفارش</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">۸</div>
+                            <div class="stat-label">علاقه‌مندی</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">۴</div>
+                            <div class="stat-label">نظر</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <div class="section-title">حساب کاربری</div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">ویرایش پروفایل</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">آدرس‌های من</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">کارت‌های بانکی</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <div class="section-title">سفارشات</div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">تاریخچه سفارشات</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">علاقه‌مندی‌ها</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <div class="section-title">تنظیمات</div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">اعلان‌ها</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">زبان و ارز</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">پشتیبانی</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-left">
+                                <div class="menu-icon"></div>
+                                <div class="menu-text">درباره ما</div>
+                            </div>
+                            <div class="menu-arrow">←</div>
+                        </div>
+                    </div>
+
+                    <div class="menu-section" style="margin-bottom: 100px;">
+                        <div class="menu-item" style="color: #e74c3c;">
+                            <div class="menu-left">
+                                <div class="menu-icon" style="background: #e74c3c;"></div>
+                                <div class="menu-text" style="color: #e74c3c;">خروج از حساب</div>
+                            </div>
+                            <div class="menu-arrow" style="color: #e74c3c;">←</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-nav">
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">خانه</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">برندها</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">جستجو</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">سبد خرید</div>
+                    </div>
+                    <div class="nav-item" style="color: #8FBC8F;">
+                        <div class="nav-icon" style="background: #8FBC8F;"></div>
+                        <div class="nav-label" style="color: #8FBC8F;">حساب کاربری</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

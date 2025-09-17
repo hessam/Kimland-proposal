@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimLand Visual Design System - Refined</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            color: #1a1a1a;
+            background: #ffffff;
+            font-weight: 400;
+        }
+
+        /* Global Header */
+        .global-header {
+            background: #8FBC8F;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(143, 188, 143, 0.2);
+        }
+
+        .global-header .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .global-header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .global-header .home-nav-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .global-header .home-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Adjust container to account for global header */
+        .container {
+            padding-top: 60px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            background: white;
+            padding: 60px 40px;
+            border: 1px solid #f0f0f0;
+            border-radius: 2px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 30px;
+            background: #8FBC8F;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 300;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .section {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 60px 40px;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
+        }
+
+        /* Color Palette - Minimalist Style */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+        }
+
+        .color-item {
+            text-align: left;
+        }
+
+        .color-swatch {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 16px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .color-name {
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #1a1a1a;
+        }
+
+        .color-code {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* Typography - Clean & Minimal */
+        .type-sample {
+            margin-bottom: 32px;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+
+        .type-label {
+            font-size: 11px;
+            color: #666666;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .h1-sample { font-size: 32px; font-weight: 300; letter-spacing: -0.5px; }
+        .h2-sample { font-size: 24px; font-weight: 400; letter-spacing: -0.3px; }
+        .h3-sample { font-size: 18px; font-weight: 500; }
+        .body-large { font-size: 16px; font-weight: 400; }
+        .body-regular { font-size: 14px; font-weight: 400; }
+        .caption { font-size: 12px; font-weight: 400; color: #666666; }
+
+        /* Buttons - Trendyol Style */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .button {
+            height: 44px;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            background: white;
+            color: #1a1a1a;
+        }
+
+        .btn-primary {
+            background: #8FBC8F;
+            color: white;
+            border: 1px solid #8FBC8F;
+        }
+
+        .btn-primary:hover {
+            background: #7fb07f;
+            border-color: #7fb07f;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            border-color: #8FBC8F;
+        }
+
+        .btn-accent {
+            background: #F5C2C7;
+            color: #1a1a1a;
+            border: 1px solid #F5C2C7;
+        }
+
+        .floating-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #8FBC8F;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(143, 188, 143, 0.3);
+            transition: all 0.15s ease;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(143, 188, 143, 0.4);
+        }
+
+        /* Navigation - Clean Trendyol Style */
+        .nav-demo {
+            background: white;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+            padding: 0 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .nav-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: #666666;
+            border-radius: 1px;
+        }
+
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 60px;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+        .nav-item.active .nav-icon {
+            background: #8FBC8F;
+        }
+
+        .nav-item.active .nav-label {
+            color: #8FBC8F;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* Forms - Clean Style */
+        .form-demo {
+            max-width: 400px;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 44px;
+            padding: 0 16px;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+            transition: border-color 0.15s ease;
+            background: white;
+            font-weight: 400;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #8FBC8F;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .search-input {
+            height: 40px;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            padding: 0 16px 0 40px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background: #666666;
+        }
+
+        /* Currency Toggle */
+        .currency-toggle {
+            display: inline-flex;
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .currency-option {
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            background: white;
+            border: none;
+            color: #666666;
+        }
+
+        .currency-option.active {
+            background: #8FBC8F;
+            color: white;
+        }
+
+        /* Product Cards - Minimalist Trendyol Style */
+        .card-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 240px;
+            background: #fafafa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 14px;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .brand-badge {
+            background: #f0f0f0;
+            color: #666666;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            color: #1a1a1a;
+        }
+
+        .price {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .original-price {
+            font-size: 13px;
+            color: #666666;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-weight: 400;
+        }
+
+        /* Mobile Mockups */
+        .mockup-container {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: #1a1a1a;
+            border-radius: 24px;
+            padding: 16px;
+            position: relative;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mockup-header {
+            height: 56px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .mockup-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .mockup-bottom-nav {
+            height: 60px;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .mini-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 9px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .mini-nav-item.active {
+            color: #8FBC8F;
+        }
+
+        .mini-nav-icon {
+            width: 18px;
+            height: 18px;
+            background: currentColor;
+            margin-bottom: 3px;
+        }
+
+        .mini-product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mini-product-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+
+        .mini-card-image {
+            width: 100%;
+            height: 80px;
+            background: #fafafa;
+        }
+
+        .mini-card-content {
+            padding: 8px;
+        }
+
+        .mini-card-title {
+            font-size: 11px;
+            margin-bottom: 4px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .mini-price {
+            font-size: 11px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        /* WebView Integration */
+        .webview-demo {
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            padding: 24px;
+        }
+
+        .webview-header {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .brand-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .brand-tab {
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #f0f0f0;
+            background: white;
+            color: #666666;
+            cursor: pointer;
+        }
+
+        .brand-tab.active {
+            background: #8FBC8F;
+            color: white;
+            border-color: #8FBC8F;
+        }
+
+        .webview-content {
+            height: 200px;
+            background: white;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            position: relative;
+            font-size: 14px;
+        }
+
+        /* Admin Dashboard */
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 24px;
+        }
+
+        .metric-icon {
+            width: 32px;
+            height: 32px;
+            background: #8FBC8F;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        .metric-change {
+            font-size: 11px;
+            color: #8FBC8F;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* Chart */
+        .chart-container {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 32px;
+        }
+
+        .chart-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .chart {
+            height: 160px;
+            background: #fafafa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Loading States */
+        .loading-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+        }
+
+        .loading-item {
+            text-align: center;
+            padding: 24px;
+            background: white;
+            border: 1px solid #f0f0f0;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #f0f0f0;
+            border-top: 2px solid #8FBC8F;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .skeleton {
+            width: 100%;
+            height: 40px;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .skeleton::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .loading-label {
+            font-size: 12px;
+            color: #666666;
+            font-weight: 400;
+        }
+
+        /* RTL Support */
+        .rtl-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .rtl-example {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 24px;
+        }
+
+        .rtl-example h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .rtl-content {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666666;
+        }
+
+        /* Technical Specs */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .spec-section {
+            background: white;
+            border: 1px solid #f0f0f0;
+            padding: 32px;
+        }
+
+        .spec-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #8FBC8F;
+        }
+
+        .code-block {
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            padding: 16px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 11px;
+            overflow-x: auto;
+            color: #666666;
+            line-height: 1.4;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            font-size: 13px;
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+            color: #666666;
+        }
+
+        .feature-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #8FBC8F;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px;
+            background: white;
+            border: 1px solid #f0f0f0;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .footer-subtitle {
+            font-size: 13px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .footer-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-tag {
+            background: #fafafa;
+            color: #666666;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 500;
+            border: 1px solid #f0f0f0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .section {
+                padding: 40px 24px;
+            }
+            
+            .button-grid,
+            .card-examples,
+            .color-grid,
+            .mockup-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .mockup-container {
+                gap: 40px;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <!-- Global Header -->
+        <div class="global-header">
+            <a href="../index.html" class="logo">KimLand</a>
+            <div class="nav-actions">
+                <a href="../index.html" class="home-nav-btn">🏠</a>
+            </div>
+        </div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">KC</div>
+            <h1>KimLand Design System</h1>
+            <p class="subtitle">Refined Multi-Brand E-commerce Platform</p>
+        </div>
+
+        <!-- Brand Colors -->
+        <div class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #8FBC8F;"></div>
+                    <div class="color-name">Primary Green</div>
+                    <div class="color-code">#8FBC8F</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #F5C2C7;"></div>
+                    <div class="color-name">Accent Pink</div>
+                    <div class="color-code">#F5C2C7</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #1a1a1a;"></div>
+                    <div class="color-name">Text Primary</div>
+                    <div class="color-code">#1A1A1A</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #666666;"></div>
+                    <div class="color-name">Text Secondary</div>
+                    <div class="color-code">#666666</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #f0f0f0;"></div>
+                    <div class="color-name">Border</div>
+                    <div class="color-code">#F0F0F0</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-swatch" style="background: #fafafa;"></div>
+                    <div class="color-name">Background</div>
+                    <div class="color-code">#FAFAFA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="type-sample">
+                <div class="type-label">Large Title</div>
+                <div class="h1-sample">Browse Fashion Brands</div>
+            </div>
+            <div class="type-sample">
+                <div class="type-label">Section Header</div>
+                <div class="h2-sample">Featured Products</div>
+            </div>
+            <div class="type-sample">
+                <div class="type-label">Card Title</div>
+                <div class="h3-sample">Product Category</div>
+            </div>
+            <div class="type-sample">
+                <div class="type-label">Body Text</div>
+                <div class="body-regular">Clean, minimal interface with excellent usability</div>
+            </div>
+            <div class="type-sample">
+                <div class="type-label">Caption</div>
+                <div class="caption">Price includes VAT and shipping</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="section">
+            <h2 class="section-title">Navigation Components</h2>
+            <div class="nav-demo">
+                <div class="top-nav">
+                    <div class="nav-icon"></div>
+                    <div class="nav-title">Search Results</div>
+                    <div class="nav-icons">
+                        <div class="nav-icon"></div>
+                        <div class="nav-icon"></div>
+                    </div>
+                </div>
+                <div class="bottom-nav">
+                    <div class="nav-item active">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">Home</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">Brands</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">Search</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">Cart</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">Account</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="section">
+            <h2 class="section-title">Button System</h2>
+            <div class="button-grid">
+                <button class="button btn-primary">Add to Cart</button>
+                <button class="button btn-secondary">View Details</button>
+                <button class="button btn-accent">Special Offer</button>
+                <button class="floating-btn">+</button>
+            </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="section">
+            <h2 class="section-title">Form Elements</h2>
+            <div class="form-demo">
+                <div class="search-bar">
+                    <div class="search-icon"></div>
+                    <input type="text" class="form-input search-input" placeholder="Search products and brands">
+                </div>
+                
+                <div class="currency-toggle">
+                    <button class="currency-option active">TRY</button>
+                    <button class="currency-option">IRR</button>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Email</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                
+                <button class="button btn-primary" style="width: 100%;">Continue</button>
+            </div>
+        </div>
+
+        <!-- Product Cards -->
+        <div class="section">
+            <h2 class="section-title">Product Cards</h2>
+            <div class="card-examples">
+                <div class="product-card">
+                    <div class="card-image">
+                        Product Image
+                        <div class="heart-icon">♡</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="brand-badge">Zara</div>
+                        <div class="card-title">Oversized Cotton Shirt</div>
+                        <div class="price">₺299 <span class="original-price">₺399</span></div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="card-image">
+                        Product Image
+                        <div class="heart-icon">♡</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="brand-badge">Mango</div>
+                        <div class="card-title">Minimal Blazer Jacket</div>
+                        <div class="price">₺599</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="card-image">
+                        Product Image
+                        <div class="heart-icon">♡</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="brand-badge">KimLand</div>
+                        <div class="card-title">Classic Summer Dress</div>
+                        <div class="price">₺449</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WebView Integration -->
+        <div class="section">
+            <h2 class="section-title">Brand WebView Integration</h2>
+            <div class="webview-demo">
+                <div class="webview-header">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <div style="font-size: 14px; font-weight: 500;">Multi-Brand Navigation</div>
+                        <div class="currency-toggle" style="margin: 0;">
+                            <button class="currency-option active">TRY</button>
+                            <button class="currency-option">IRR</button>
+                        </div>
+                    </div>
+                    <div class="brand-tabs">
+                        <div class="brand-tab active">Zara</div>
+                        <div class="brand-tab">Mango</div>
+                        <div class="brand-tab">H&M</div>
+                        <div class="brand-tab">KimLand</div>
+                    </div>
+                </div>
+                <div class="webview-content">
+                    Brand Website Content (WebView)
+                    <button class="floating-btn" style="position: absolute; bottom: 16px; right: 16px;">+</button>
+                </div>
+            </div>
+            
+            <div style="margin-top: 24px; background: white; border: 1px solid #f0f0f0; padding: 24px;">
+                <h4 style="margin-bottom: 16px; font-size: 14px; font-weight: 500; color: #8FBC8F;">Integration Features</h4>
+                <ul class="feature-list">
+                    <li>Real-time currency conversion in header</li>
+                    <li>Floating add-to-cart overlay on product pages</li>
+                    <li>Seamless brand switching without page reload</li>
+                    <li>Universal cart integration across all brands</li>
+                    <li>JavaScript bridge for product detection</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mobile App Mockups -->
+        <div class="section">
+            <h2 class="section-title">Mobile Interface</h2>
+            <div class="mockup-container">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="mockup-header">KimLand</div>
+                        <div class="mockup-content">
+                            <div class="currency-toggle" style="margin-bottom: 16px;">
+                                <button class="currency-option active">TRY</button>
+                                <button class="currency-option">IRR</button>
+                            </div>
+                            <div class="search-bar" style="margin-bottom: 16px;">
+                                <div class="search-icon"></div>
+                                <input type="text" class="form-input search-input" placeholder="Search..." style="font-size: 12px; height: 32px;">
+                            </div>
+                            <div style="font-size: 12px; font-weight: 500; margin-bottom: 12px; color: #1a1a1a;">Featured Products</div>
+                            <div class="mini-product-grid">
+                                <div class="mini-product-card">
+                                    <div class="mini-card-image"></div>
+                                    <div class="mini-card-content">
+                                        <div class="mini-card-title">Zara Shirt</div>
+                                        <div class="mini-price">₺299</div>
+                                    </div>
+                                </div>
+                                <div class="mini-product-card">
+                                    <div class="mini-card-image"></div>
+                                    <div class="mini-card-content">
+                                        <div class="mini-card-title">Mango Dress</div>
+                                        <div class="mini-price">₺599</div>
+                                    </div>
+                                </div>
+                                <div class="mini-product-card">
+                                    <div class="mini-card-image"></div>
+                                    <div class="mini-card-content">
+                                        <div class="mini-card-title">H&M Jeans</div>
+                                        <div class="mini-price">₺399</div>
+                                    </div>
+                                </div>
+                                <div class="mini-product-card">
+                                    <div class="mini-card-image"></div>
+                                    <div class="mini-card-content">
+                                        <div class="mini-card-title">KimLand Bag</div>
+                                        <div class="mini-price">₺249</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mockup-bottom-nav">
+                            <div class="mini-nav-item active">
+                                <div class="mini-nav-icon"></div>
+                                <span>Home</span>
+                            </div>
+                            <div class="mini-nav-item">
+                                <div class="mini-nav-icon"></div>
+                                <span>Brands</span>
+                            </div>
+                            <div class="mini-nav-item">
+                                <div class="mini-nav-icon"></div>
+                                <span>Search</span>
+                            </div>
+                            <div class="mini-nav-item">
+                                <div class="mini-nav-icon"></div>
+                                <span>Cart</span>
+                            </div>
+                            <div class="mini-nav-item">
+                                <div class="mini-nav-icon"></div>
+                                <span>Profile</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="margin-bottom: 24px; font-size: 16px; font-weight: 500; color: #1a1a1a;">Design Principles</h3>
+                    <div style="background: white; border: 1px solid #f0f0f0; padding: 24px; margin-bottom: 20px;">
+                        <h4 style="color: #8FBC8F; margin-bottom: 12px; font-size: 13px; font-weight: 500;">Minimal & Clean</h4>
+                        <p style="font-size: 13px; color: #666666; line-height: 1.5;">Inspired by Trendyol's refined aesthetic with optimal whitespace and clear visual hierarchy.</p>
+                    </div>
+                    
+                    <div style="background: white; border: 1px solid #f0f0f0; padding: 24px; margin-bottom: 20px;">
+                        <h4 style="color: #8FBC8F; margin-bottom: 12px; font-size: 13px; font-weight: 500;">Consistent Branding</h4>
+                        <p style="font-size: 13px; color: #666666; line-height: 1.5;">KimLand colors used strategically without overwhelming the clean interface.</p>
+                    </div>
+                    
+                    <div style="background: white; border: 1px solid #f0f0f0; padding: 24px; margin-bottom: 20px;">
+                        <h4 style="color: #8FBC8F; margin-bottom: 12px; font-size: 13px; font-weight: 500;">Multi-Currency Flow</h4>
+                        <p style="font-size: 13px; color: #666666; line-height: 1.5;">Seamless TRY/IRR switching with real-time conversion throughout the experience.</p>
+                    </div>
+                    
+                    <div style="background: white; border: 1px solid #f0f0f0; padding: 24px;">
+                        <h4 style="color: #8FBC8F; margin-bottom: 12px; font-size: 13px; font-weight: 500;">Universal Commerce</h4>
+                        <p style="font-size: 13px; color: #666666; line-height: 1.5;">Unified shopping experience across multiple brand platforms with single checkout.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading States -->
+        <div class="section">
+            <h2 class="section-title">Loading States</h2>
+            <div class="loading-examples">
+                <div class="loading-item">
+                    <div class="spinner"></div>
+                    <div class="loading-label">Loading Spinner</div>
+                </div>
+                
+                <div class="loading-item">
+                    <div class="skeleton"></div>
+                    <div class="loading-label">Skeleton Loading</div>
+                </div>
+                
+                <div class="loading-item">
+                    <button class="button btn-primary" style="position: relative; color: transparent;">
+                        Loading Text
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <div style="width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                        </div>
+                    </button>
+                    <div class="loading-label">Button Loading</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div class="section">
+            <h2 class="section-title">Admin Dashboard</h2>
+            <div class="metric-cards">
+                <div class="metric-card">
+                    <div class="metric-icon">₺</div>
+                    <div class="metric-value">₺45,280</div>
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-change">+12% vs last month</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">#</div>
+                    <div class="metric-value">1,247</div>
+                    <div class="metric-label">Orders</div>
+                    <div class="metric-change">+8% vs last week</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">👥</div>
+                    <div class="metric-value">892</div>
+                    <div class="metric-label">Active Users</div>
+                    <div class="metric-change">+15% vs last month</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">Revenue Analytics</div>
+                <div class="chart">
+                    <svg width="100%" height="100%" viewBox="0 0 400 160" style="position: absolute;">
+                        <polyline fill="none" stroke="#8FBC8F" stroke-width="2" points="0,120 50,100 100,85 150,70 200,65 250,75 300,55 350,40 400,30"/>
+                        <circle cx="400" cy="30" r="3" fill="#8FBC8F"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- RTL Support -->
+        <div class="section">
+            <h2 class="section-title">RTL & Localization Support</h2>
+            <div class="rtl-demo">
+                <div class="rtl-example">
+                    <h4>English Interface</h4>
+                    <div class="rtl-content">
+                        <div style="margin-bottom: 12px;">
+                            <strong style="color: #1a1a1a;">Fashion Collection</strong>
+                        </div>
+                        <div style="margin-bottom: 16px;">Browse our latest products from premium fashion brands with seamless shopping experience.</div>
+                        <button class="button btn-primary" style="padding: 8px 16px; height: auto; font-size: 12px;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="rtl-example" dir="rtl">
+                    <h4>Persian Interface</h4>
+                    <div class="rtl-content" style="text-align: right;">
+                        <div style="margin-bottom: 12px;">
+                            <strong style="color: #1a1a1a;">کالکشن مد و فشن</strong>
+                        </div>
+                        <div style="margin-bottom: 16px;">جدیدترین محصولات از برترین برندهای مد را با تجربه خرید بی‌نقص مرور کنید.</div>
+                        <button class="button btn-primary" style="padding: 8px 16px; height: auto; font-size: 12px;">افزودن به سبد</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="section">
+            <h2 class="section-title">Technical Specifications</h2>
+            <div class="spec-grid">
+                <div class="spec-section">
+                    <div class="spec-title">Design Tokens</div>
+                    <div class="code-block">:root {
+  /* Colors */
+  --primary-green: #8FBC8F;
+  --accent-pink: #F5C2C7;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --border-color: #f0f0f0;
+  --background: #fafafa;
+  
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-size-lg: 32px;
+  --font-size-md: 16px;
+  --font-size-sm: 14px;
+  --font-size-xs: 12px;
+  
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  
+  /* Effects */
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+  --border-radius: 2px;
+}</div>
+                </div>
+
+                <div class="spec-section">
+                    <div class="spec-title">Component Architecture</div>
+                    <ul class="feature-list">
+                        <li>React Native core components</li>
+                        <li>WebView integration layer</li>
+                        <li>JavaScript bridge communication</li>
+                        <li>Real-time currency conversion</li>
+                        <li>Universal cart state management</li>
+                        <li>Multi-brand product detection</li>
+                        <li>Floating UI overlays</li>
+                        <li>Responsive grid systems</li>
+                    </ul>
+                </div>
+
+                <div class="spec-section">
+                    <div class="spec-title">Accessibility Standards</div>
+                    <ul class="feature-list">
+                        <li>WCAG 2.1 AA compliance</li>
+                        <li>4.5:1 minimum color contrast</li>
+                        <li>44px minimum touch targets</li>
+                        <li>Screen reader optimization</li>
+                        <li>Keyboard navigation support</li>
+                        <li>RTL text direction support</li>
+                        <li>Persian/Arabic typography</li>
+                        <li>Voice control compatibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-title">Production Ready Design System</div>
+            <div class="footer-subtitle">Optimized for Sprint 1-3 development with Trendyol-inspired aesthetics</div>
+            <div class="footer-tags">
+                <span class="footer-tag">Minimal Design</span>
+                <span class="footer-tag">Multi-Brand</span>
+                <span class="footer-tag">RTL Support</span>
+                <span class="footer-tag">WebView Ready</span>
+                <span class="footer-tag">Accessible</span>
+                <span class="footer-tag">Responsive</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

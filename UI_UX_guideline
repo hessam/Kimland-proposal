@@ -1,0 +1,442 @@
+# KimLand App - UI Design System & Style Guide
+
+**Version:** 1.0  
+**Date:** September 15, 2025  
+**Project:** Multi-Brand Fashion E-commerce Platform
+
+---
+
+## 🎨 Brand Identity & Visual Foundation
+
+### Brand Colors
+Based on the KimLand brand identity, our color palette maintains the signature green and pink combination while ensuring accessibility and modern appeal.
+
+#### Primary Colors
+- **KimLand Green:** `#8FBC8F` (Sage Green)
+  - Usage: Primary buttons, navigation highlights, brand elements
+  - Accessibility: AA compliant with white text
+- **KimLand Pink:** `#F5C2C7` (Soft Rose Pink)  
+  - Usage: Secondary buttons, accent elements, promotional banners
+  - Accessibility: Requires dark text for contrast
+
+#### Extended Palette
+- **Deep Green:** `#6B8E6B` - Active states, hover effects
+- **Light Green:** `#B8D4B8` - Background tints, subtle highlights
+- **Coral Pink:** `#E8A5AA` - Call-to-action elements
+- **Pale Pink:** `#FAE5E7` - Background washes, card backgrounds
+
+#### Neutral Colors
+- **Charcoal:** `#2D2D2D` - Primary text, headers
+- **Medium Gray:** `#666666` - Secondary text
+- **Light Gray:** `#E5E5E5` - Borders, dividers
+- **Off-White:** `#FAFAFA` - Background color
+- **Pure White:** `#FFFFFF` - Cards, modals, input fields
+
+---
+
+## 📝 Typography System
+
+### Font Hierarchy
+Following the client's preference for display fonts in headers and sans-serif for body text.
+
+#### Headers & Titles
+- **Font Family:** Shabnam (Persian) / SF Pro Display (Latin)
+- **Weights:** Regular (400), Medium (500), Bold (700)
+- **Usage:** Page titles, section headers, brand elements
+
+#### Body Text
+- **Font Family:** Inter / SF Pro Text
+- **Weights:** Regular (400), Medium (500), SemiBold (600)
+- **Usage:** All body text, buttons, navigation, forms
+
+### Type Scale
+```
+H1 (Page Titles): 28px / Bold / Charcoal
+H2 (Section Headers): 24px / Bold / Charcoal  
+H3 (Subsections): 20px / Medium / Charcoal
+H4 (Card Titles): 18px / Medium / Charcoal
+Body Large: 16px / Regular / Charcoal
+Body Regular: 14px / Regular / Medium Gray
+Body Small: 12px / Regular / Medium Gray
+Caption: 11px / Regular / Medium Gray
+```
+
+---
+
+## 🧩 Component Library
+
+### Navigation Components
+
+#### Bottom Navigation Bar
+```
+Height: 80px
+Background: White with subtle shadow
+Active State: KimLand Green with icon + text
+Inactive State: Medium Gray
+Icons: 24px outline style
+```
+
+**Tabs:**
+- Home (house icon)
+- Brands (grid icon) 
+- Search (search icon)
+- Cart (shopping bag with badge)
+- Profile (user icon)
+
+#### Top Navigation Header
+```
+Height: 60px
+Background: White
+Title: H3 styling
+Back Button: 24px arrow-left icon in Charcoal
+Actions: 24px icons (search, favorites, notifications)
+```
+
+### Button System
+
+#### Primary Button
+```
+Height: 48px
+Padding: 12px 24px
+Background: KimLand Green
+Text: White, Body Regular, SemiBold
+Border Radius: 8px
+Hover: Deep Green background
+Disabled: Light Gray background, Medium Gray text
+```
+
+#### Secondary Button  
+```
+Height: 48px
+Padding: 12px 24px
+Background: Transparent
+Text: KimLand Green, Body Regular, SemiBold
+Border: 1px solid KimLand Green
+Border Radius: 8px
+Hover: Light Green background
+```
+
+#### Floating Action Button (Add to Cart)
+```
+Size: 56px diameter
+Background: Coral Pink
+Icon: White plus or cart icon
+Shadow: 0 4px 12px rgba(0,0,0,0.15)
+Position: Fixed, bottom-right with 16px margin
+```
+
+### Form Elements
+
+#### Input Fields
+```
+Height: 48px
+Padding: 12px 16px
+Background: White
+Border: 1px solid Light Gray
+Border Radius: 8px
+Focus State: KimLand Green border
+Error State: Red border with error message below
+Placeholder: Medium Gray text
+```
+
+#### Search Bar
+```
+Height: 44px
+Background: Off-White
+Border Radius: 22px (pill shape)
+Icon: 20px search icon, Medium Gray
+Placeholder: "Search products, brands..."
+```
+
+### Card Components
+
+#### Product Card
+```
+Width: Responsive (2 columns on mobile)
+Background: White
+Border Radius: 12px
+Shadow: 0 2px 8px rgba(0,0,0,0.08)
+Padding: 12px
+
+Elements:
+- Product Image: 16:20 aspect ratio
+- Brand Badge: Small chip with Light Green background
+- Product Title: Body Regular, 2 lines max
+- Price: Body Large, Bold, Charcoal
+- Original Price: Body Small, strikethrough, Medium Gray
+- Heart Icon: 20px, top-right overlay on image
+```
+
+#### Brand Card (Homepage)
+```
+Height: 120px
+Background: Gradient from brand color to white
+Border Radius: 16px
+Content: Brand logo + name centered
+Shadow: 0 4px 12px rgba(0,0,0,0.1)
+```
+
+#### Order Status Card
+```
+Background: White
+Padding: 16px
+Border Radius: 12px
+Border Left: 4px solid status color (Green/Orange/Red)
+
+Elements:
+- Order Number: Body Small, Medium Gray
+- Status: Body Regular, SemiBold, status color
+- Date: Body Small, Medium Gray
+- Progress Bar: 8px height, Light Gray track, KimLand Green fill
+```
+
+### Shopping Cart Components
+
+#### Cart Item
+```
+Height: 100px
+Background: White
+Padding: 12px
+Border Bottom: 1px solid Light Gray
+
+Layout: Horizontal
+- Product Image: 80x80px, rounded 8px
+- Product Info: Flexible width
+- Quantity Controls: Stepper component
+- Price: Right-aligned
+- Remove Icon: 20px trash icon, Medium Gray
+```
+
+#### Cart Summary
+```
+Background: Off-White
+Padding: 16px
+Border Radius: 12px (top only)
+Position: Sticky bottom
+
+Elements:
+- Subtotal, Shipping, Total rows
+- Currency Toggle: TRY/IRR switch
+- Checkout Button: Full width Primary Button
+```
+
+---
+
+## 🎯 Screen Templates & Layouts
+
+### Homepage Layout
+```
+1. Header: Logo + Search + Notifications (60px)
+2. Currency Banner: TRY/IRR rates (40px, dismissible)
+3. Hero Section: Promotional content (200px)
+4. Brand Navigation: Horizontal scroll (140px)
+5. Featured Products: "Trending Now" grid
+6. KimLand Section: Dedicated inventory showcase
+7. Bottom Navigation (80px)
+```
+
+### Product Listing (WebView Integration)
+```
+1. Navigation Header with brand context
+2. Floating Currency Converter (top-right)
+3. WebView Container (full height minus nav)
+4. Floating Add to Cart Button (when product detected)
+5. Native Cart Badge (updates real-time)
+```
+
+### Cart & Checkout Flow
+```
+Cart Screen:
+- Header with item count
+- Cart items list (scrollable)
+- Promo code input
+- Summary section (sticky)
+
+Checkout Screens:
+- Address selection/entry
+- Payment method selection  
+- Order review & confirmation
+- Success screen with order tracking
+```
+
+### User Profile
+```
+1. Profile Header: Avatar + name + edit button
+2. Quick Stats: Orders, Favorites, Reviews
+3. Menu Items: Order History, Addresses, Payment Methods
+4. Settings: Language, Currency, Notifications
+5. Support: Help, Contact, About
+```
+
+---
+
+## 🎨 Visual Design Principles
+
+### Trendyol-Inspired Minimalism
+- **Clean Layouts:** Generous whitespace, clear hierarchy
+- **Subtle Shadows:** Soft elevation for depth without heaviness
+- **Rounded Corners:** 8px-16px radius for modern feel
+- **Icon Style:** Outline icons for consistency
+- **Photography:** Clean product shots with consistent lighting
+
+### Information Architecture
+- **Visual Priority:** Price and CTA buttons most prominent
+- **Progressive Disclosure:** Complex features hidden until needed
+- **Consistent Patterns:** Same interactions across all flows
+- **Error Prevention:** Clear validation and helpful messages
+
+---
+
+## 📱 Mobile-First Responsive Design
+
+### Breakpoints
+- **Mobile:** 375px - 767px (primary focus)
+- **Tablet:** 768px - 1024px (adapted layout)
+- **Desktop:** 1025px+ (web dashboard for admin)
+
+### Touch Targets
+- **Minimum Size:** 44px x 44px
+- **Recommended:** 48px x 48px for primary actions
+- **Spacing:** Minimum 8px between interactive elements
+
+### Grid System
+- **Mobile:** 16px margins, 12px gutters
+- **Content Width:** Max 343px on mobile
+- **Columns:** 2 for products, 1 for detailed content
+
+---
+
+## ♿ Accessibility Standards
+
+### Color Contrast
+- **AA Compliance:** 4.5:1 ratio for normal text
+- **AAA Compliance:** 7:1 ratio for important elements
+- **Color Independence:** No information conveyed by color alone
+
+### Text Accessibility
+- **Minimum Size:** 14px for body text
+- **Line Height:** 1.5x font size minimum
+- **RTL Support:** Full Persian/Arabic text support
+
+### Interaction Accessibility
+- **Focus Indicators:** Visible focus states for keyboard navigation
+- **Screen Reader:** Semantic HTML and ARIA labels
+- **Voice Over:** Descriptive labels for all interactive elements
+
+---
+
+## 🎭 Animation & Micro-Interactions
+
+### Loading States
+- **Page Loading:** KimLand logo with subtle pulse animation
+- **Content Loading:** Skeleton screens in brand colors
+- **Button Loading:** Spinner with primary color
+- **Image Loading:** Blur-to-sharp transition
+
+### Transitions
+- **Page Transitions:** Slide from right (iOS style)
+- **Modal Appearance:** Scale up from 95% with opacity
+- **Cart Updates:** Bounce animation for quantity changes
+- **Success States:** Checkmark animation in KimLand Green
+
+### Feedback Animations
+- **Button Press:** Scale down to 96% on touch
+- **Favorite Toggle:** Heart fill animation
+- **Add to Cart:** Product image flies to cart icon
+- **Pull to Refresh:** Custom animation with brand elements
+
+---
+
+## 💰 Currency & Localization
+
+### Multi-Currency Display
+```
+Currency Toggle Component:
+- Position: Top navigation bar
+- Style: Segmented control (TRY | IRR)
+- Animation: Smooth slide transition
+- Colors: Active state in KimLand Green
+```
+
+### Persian/Farsi Support
+- **RTL Layout:** Complete right-to-left interface support
+- **Number Formatting:** Persian numerals option
+- **Date Formatting:** Persian calendar support
+- **Font Selection:** Shabnam for Persian text
+
+---
+
+## 📊 Data Visualization (Admin Dashboard)
+
+### Chart Styling
+- **Colors:** KimLand brand palette for data series
+- **Grid Lines:** Light Gray, minimal styling
+- **Typography:** Same system fonts for consistency
+- **Tooltips:** White background, subtle shadow
+
+### Dashboard Cards
+```
+Metric Cards:
+- Background: White
+- Padding: 24px
+- Border Radius: 12px
+- Icon: 32px in KimLand Green
+- Value: Large bold number
+- Trend: Small chart or percentage change
+```
+
+---
+
+## 🔧 Implementation Guidelines
+
+### Development Handoff
+- **Design Tokens:** All colors, typography, spacing as CSS variables
+- **Component Documentation:** Props, states, and usage examples  
+- **Asset Preparation:** SVG icons, optimized images, export specifications
+- **Animation Specifications:** Duration, easing, and trigger conditions
+
+### Quality Assurance
+- **Pixel Perfect:** 1px tolerance for spacing and alignment
+- **Cross-Device Testing:** iPhone, Android, various screen sizes
+- **Performance:** 60fps animations, optimized images
+- **Accessibility Testing:** VoiceOver, color blindness simulation
+
+---
+
+## 📋 Component Checklist
+
+### Phase 1 Components (Sprint 1-3)
+- [x] Navigation (top & bottom)
+- [x] Buttons (primary, secondary, floating)
+- [x] Form inputs and search
+- [x] Product cards
+- [x] Brand selection interface
+- [x] Cart components
+- [x] Loading states
+
+### Phase 2 Components (Sprint 4-6)  
+- [x] Checkout flow screens
+- [x] Order tracking interface
+- [x] Payment method selection
+- [x] Address management
+- [x] Success/error states
+- [x] Notification components
+
+### Phase 3 Components (Sprint 7-10)
+- [x] Dashboard charts
+- [x] Admin interface elements
+- [x] Analytics widgets
+- [x] Inventory management UI
+- [x] Report generation interface
+- [x] Advanced filtering
+
+---
+
+**Design System Status:** Ready for Development  
+**Next Review:** Sprint 2 Planning  
+**Figma File:** [Link to be added]  
+**Design Tokens:** [JSON file to be provided]
+
+---
+
+*This design system ensures a cohesive, accessible, and scalable user interface that reflects KimLand's brand identity while meeting the complex functional requirements of a multi-brand e-commerce platform.*

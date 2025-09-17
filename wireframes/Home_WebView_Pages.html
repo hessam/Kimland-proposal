@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimLand Mobile App</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* Global Header */
+        .global-header {
+            background: #8FBC8F;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(143, 188, 143, 0.2);
+        }
+
+        .global-header .logo {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .global-header .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .global-header .home-nav-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .global-header .home-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Main container for both mockups */
+        .mockups-container {
+            margin-top: 80px;
+            padding: 20px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Mobile responsive layout */
+        @media (max-width: 768px) {
+            .mockups-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .mockup-label {
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            height: 44px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .page {
+            height: calc(100% - 44px);
+            overflow-y: auto;
+        }
+
+        /* HOME PAGE */
+        .home-header {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #8FBC8F;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: #666666;
+            border-radius: 2px;
+        }
+
+        .discount-banner {
+            background: linear-gradient(135deg, #F5C2C7, #E8A5AA);
+            margin: 16px 20px;
+            padding: 20px;
+            border-radius: 8px;
+            color: #1a1a1a;
+        }
+
+        .banner-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .banner-subtitle {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .currency-toggle {
+            display: flex;
+            background: #FAFAFA;
+            border-radius: 20px;
+            margin: 0 20px 20px;
+            overflow: hidden;
+        }
+
+        .currency-btn {
+            flex: 1;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .currency-btn.active {
+            background: #8FBC8F;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 24px 20px 16px;
+            color: #1a1a1a;
+        }
+
+        .brands-container {
+            padding: 0 20px;
+            margin-bottom: 8px;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .brand-item {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .brand-item:hover {
+            border-color: #8FBC8F;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: #FAFAFA;
+            border-radius: 4px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666666;
+        }
+
+        .brand-name {
+            font-size: 11px;
+            font-weight: 500;
+            color: #666666;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 20px;
+            margin-bottom: 100px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 160px;
+            background: #FAFAFA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .heart-btn {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-brand {
+            font-size: 10px;
+            color: #666666;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .product-title {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: white;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .nav-item.active .nav-icon {
+            background: #8FBC8F;
+        }
+
+        .nav-item.active .nav-label {
+            color: #8FBC8F;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            background: #666666;
+            border-radius: 2px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        /* WEBVIEW PAGE */
+        .webview-header {
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 12px 20px;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .back-btn {
+            width: 32px;
+            height: 32px;
+            background: #FAFAFA;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .price-display {
+            background: #8FBC8F;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .brand-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .brand-tab {
+            padding: 6px 12px;
+            background: #FAFAFA;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            border: none;
+        }
+
+        .brand-tab.active {
+            background: #8FBC8F;
+            color: white;
+        }
+
+        .webview-content {
+            flex: 1;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .zara-page {
+            padding: 20px;
+            background: white;
+        }
+
+        .zara-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .zara-logo {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .season-text {
+            font-size: 12px;
+            color: #666666;
+            margin-bottom: 20px;
+        }
+
+        .product-showcase {
+            margin-bottom: 80px;
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #FAFAFA, #e8e8e8);
+            border-radius: 4px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 14px;
+        }
+
+        .product-details {
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .product-price-large {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .size-selector {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .size-btn {
+            width: 40px;
+            height: 32px;
+            border: 1px solid #e0e0e0;
+            background: white;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .size-btn.active {
+            border-color: #1a1a1a;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .floating-cart {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: #8FBC8F;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(143, 188, 143, 0.4);
+            border: none;
+            z-index: 1000;
+        }
+
+        .floating-cart:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Global Header -->
+    <div class="global-header">
+        <a href="../index.html" class="logo">KimLand</a>
+        <div class="nav-actions">
+            <a href="../index.html" class="home-nav-btn" title="Back to Home">⌂</a>
+        </div>
+    </div>
+
+    <div class="mockups-container">
+        <!-- HOME PAGE MOCKUP -->
+        <div class="mockup-section">
+            <div class="mockup-label">Home Page</div>
+            <div class="phone-container">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●○○</span>
+                    </div>
+
+                    <div class="page" id="home">
+                <div class="home-header">
+                    <div class="logo">KimLand</div>
+                    <div class="header-icons">
+                        <div class="icon"></div>
+                        <div class="icon"></div>
+                    </div>
+                </div>
+
+                <div class="discount-banner">
+                    <div class="banner-title">تخفیف ویژه فصل</div>
+                    <div class="banner-subtitle">تا ۵۰ درصد تخفیف روی محصولات منتخب</div>
+                </div>
+
+                <div class="currency-toggle">
+                    <button class="currency-btn active">لیر ترکی</button>
+                    <button class="currency-btn">ریال ایران</button>
+                </div>
+
+                <div class="section-title">برندهای محبوب</div>
+                <div class="brands-container">
+                    <div class="brands-grid">
+                        <div class="brand-item">
+                            <div class="brand-logo">Z</div>
+                            <div class="brand-name">Zara</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">M</div>
+                            <div class="brand-name">Mango</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">H</div>
+                            <div class="brand-name">H&M</div>
+                        </div>
+                        <div class="brand-item">
+                            <div class="brand-logo">K</div>
+                            <div class="brand-name">KimLand</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">پرفروش‌ترین محصولات</div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Zara</div>
+                            <div class="product-title">پیراهن کتان آستین بلند</div>
+                            <div class="product-price">₺299</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Mango</div>
+                            <div class="product-title">کت بلیزر مینیمال</div>
+                            <div class="product-price">₺599</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">H&M</div>
+                            <div class="product-title">شلوار جین راسته</div>
+                            <div class="product-price">₺399</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">KimLand</div>
+                            <div class="product-title">پیراهن تابستانی کلاسیک</div>
+                            <div class="product-price">₺449</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Zara</div>
+                            <div class="product-title">کیف دستی چرمی</div>
+                            <div class="product-price">₺750</div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            تصویر محصول
+                            <div class="heart-btn">♡</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">Mango</div>
+                            <div class="product-title">کفش اسپورت سفید</div>
+                            <div class="product-price">₺380</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-nav">
+                    <div class="nav-item active">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">خانه</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">برندها</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">جستجو</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">سبد خرید</div>
+                    </div>
+                    <div class="nav-item">
+                        <div class="nav-icon"></div>
+                        <div class="nav-label">حساب کاربری</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEBVIEW PAGE MOCKUP -->
+        <div class="mockup-section">
+            <div class="mockup-label">WebView Page</div>
+            <div class="phone-container">
+                <div class="screen">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>●●●○○</span>
+                    </div>
+
+                    <div class="page" id="webview">
+                <div class="webview-header">
+                    <div class="nav-controls">
+                        <button class="back-btn">←</button>
+                        <div class="price-display">₺299 (۱۲۵,۰۰۰ ریال)</div>
+                    </div>
+                    <div class="brand-tabs">
+                        <button class="brand-tab active">Zara</button>
+                        <button class="brand-tab">Mango</button>
+                        <button class="brand-tab">H&M</button>
+                        <button class="brand-tab">KimLand</button>
+                    </div>
+                </div>
+
+                <div class="webview-content">
+                    <div class="zara-page">
+                        <div class="zara-header">
+                            <div class="zara-logo">ZARA</div>
+                            <div class="season-text">NEW SPRING SUMMER 2025<br>COLLECTION AVAILABLE NOW</div>
+                        </div>
+
+                        <div class="product-showcase">
+                            <div class="showcase-image">Product Image</div>
+                            <div class="product-details">
+                                <div class="product-name">SOFT OVERSIZED COAT</div>
+                                <div class="product-price-large">₺299.00</div>
+                                
+                                <div class="size-selector">
+                                    <button class="size-btn">XS</button>
+                                    <button class="size-btn">S</button>
+                                    <button class="size-btn active">M</button>
+                                    <button class="size-btn">L</button>
+                                    <button class="size-btn">XL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                        <button class="floating-cart">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
